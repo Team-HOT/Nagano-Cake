@@ -1,2 +1,1 @@
-class Admin < ApplicationRecord
-end
+
