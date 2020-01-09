@@ -26,11 +26,6 @@ Rails.application.routes.draw do
   namespace :public do
     root :to => 'homes#top'
 
-    resources :products
-
-
-
-     end
 
 
 

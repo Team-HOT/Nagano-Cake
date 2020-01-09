@@ -1,2 +1,38 @@
+<h3>header</h3>
+
 <h1>会員編集画面</h1>
+
+
+<h3>登録情報編集</h3>
+<p>退会する</p>
+
+<%= form_for(@end_user) do |f| %>
+	<% if @end_user.errors.any? %>
+		<div class="alert-alert-warining">
+			<p class="error-count"><%= @end_user.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
+			<ul>
+				<% @end_user.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+	<% end %>
+<p>氏名</p>
+	<%= f.text_field :name1 %>
+	<%= f.text_field :name2 %>
+<p>カナ</p>
+	<%= f.text_field :name3 %>
+	<%= f.text_field :name4 %>
+<P>郵便番号</P>
+	<%= f.text_field :post %>
+<p>住所</p>
+	<%= f.text_field :address %>
+<p>電話番号</p>
+	<%= f.text_field :number %>
+<p>メールアドレス</p>
+	<%= f.text_field :email %>
+
+	<%= f.submit '編集内容を保存する' %>
+<% end %>
+
+
 
