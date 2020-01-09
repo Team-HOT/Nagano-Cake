@@ -14,6 +14,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/home', to:'home#top'
   end
+  namespace :public do
+    root :to => 'homes#top'
+
+
+
+
+
+
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
