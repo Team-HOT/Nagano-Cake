@@ -1,27 +1,18 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'end_users/index'
-    get 'end_users/show'
-    get 'end_users/edit'
-    get 'end_users/update'
+    resources :end_users, only:[:index, :show, :edit, :update]
   end
   namespace :admin do
-    get 'product_categories/index'
-    get 'product_categories/create'
-    get 'product_categories/edit'
-    get 'product_categories/update'
+    resources :product_categories, only:[:index, :create, :edit, :update]
   end
   namespace :admin do
-    get 'products/index'
-    get 'products/new'
-    get 'products/create'
-    get 'products/show'
-    get 'products/edit'
-    get 'products/update'
-    get 'products/destroy'
+    resources :products
   end
   namespace :admin do
-    get 'home/top'
+    resources :orders, only:[:index, :show, :update]
+  end
+  namespace :admin do
+    get '/home', to:'home#top'
   end
   devise_for :admins
   devise_for :end_users
