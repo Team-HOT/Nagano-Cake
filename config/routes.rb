@@ -23,9 +23,13 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'home/top'
   end
-  
   namespace :public do
     root :to => 'homes#top'
+
+    resources :products
+
+
+
      end
 
 
