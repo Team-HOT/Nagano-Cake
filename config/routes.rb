@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   
   namespace :public do
     root :to => 'homes#top'
+    resources :end_users
      end
 
 

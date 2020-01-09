@@ -5,7 +5,7 @@
 
 <%= link_to "login", new_end_user_session_path  %>
 
-<%= link_to "logout", destroy_end_user_session_path %>
+<%= link_to "logout", destroy_end_user_session_path, method: :delete %>
 
 <%= link_to "sign up",  new_end_user_registration_path %>
 
