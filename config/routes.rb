@@ -16,7 +16,14 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
+<<<<<<< HEAD
+    resources :end_users
+    resources :deliveries
+    resources :orders
+     end
+=======
 
+>>>>>>> master
 
 
 
