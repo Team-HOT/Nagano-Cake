@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
-    
-　　  resources :end_users do
+  resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
         delete 'destory_p', on: :member
@@ -35,6 +34,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    resources :products
     resources :product_categories, only:[:index, :create, :new, ]
   end
   devise_for :admins
