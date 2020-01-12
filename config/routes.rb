@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :end_users, only:[:index, :show, :edit, :update]
   end
   namespace :admin do
-    resources :product_categories, only:[:index, :create, :edit, :update]
+    resources :product_categories, only:[:index, :new, :create, :edit, :update]
   end
   namespace :admin do
     resources :products
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   namespace :public do
     root :to => 'homes#top'
 
-    resources :end_users do
+　　  resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
         delete 'destory_p', on: :member
@@ -30,7 +30,6 @@ Rails.application.routes.draw do
     resources :orders
     resources :cart_items
   end
-
 
   devise_for :admins
   devise_for :end_users
