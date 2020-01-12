@@ -1,1 +1,21 @@
 <h1>商品詳細ページ</h1>
+<!-- header用のdiv -->
+<div class="header">
+<%= image_tag 'jpg2.jpg',size:'50x50' %>
+</div>
+
+
+<div class="sidebar">
+<h3>ジャンル検索</h3>
+<h4>ケーキ</h4>
+<h4>プリン</h4>
+<h4>焼き菓子</h4>
+<h4>キャンディ</h4>
+</div>
+<h1>商品詳細</h1>
+
+<%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
+
+
+
+

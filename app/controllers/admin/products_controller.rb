@@ -3,10 +3,13 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @product = Product.new
+    @product_category = ProductCategory.all
   end
 
   def new
     @product = Product.new
+    @product_category = ProductCategory.new
   end
 
   def create
