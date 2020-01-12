@@ -3,6 +3,9 @@
 <!-- 商品登録フォーム -->
 <%= form_for(@product, url: admin_products_path) do |f| %>
 
+<h4>画像選択</h4>
+<%= f.attachment_field :product_image %>
+
 <h4>商品名</h4>
 <%= f.text_field :name %>
 
@@ -10,16 +13,13 @@
 <%= f.text_field :product_body %>
 
 <h4>ジャンル</h4>
+<%= f.collection_select :product_category_id, ProductCategory.all, :id, :product_category_name %>
 
 <h4>税抜価格</h4>
 <%= f.text_field :price %>円
 
-
 <h4>販売ステータス</h4>
-
-<!-- gemインストールまだのため未作成 -->
-<h4>画像選択</h4>
-
+<%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %><br>
 
 <%= f.submit '新規登録' %>
 <% end %>

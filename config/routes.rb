@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :end_users, only:[:index, :show, :edit, :update]
   end
   namespace :admin do
-    resources :product_categories, only:[:index, :create, :edit, :update]
+    resources :product_categories, only:[:index, :new, :create, :edit, :update]
   end
   namespace :admin do
     resources :products
@@ -16,12 +16,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
-
-
-
-
-
-
+  end
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
