@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+  @import "bootstrap-sprockets";  /*ここを追加*/
+  @import "bootstrap";            /*ここを追加*/
+
+
+
+
+
+.sidebar {
+  width: 230px;
+  float: left;
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,13 @@
 class Admin::ProductsController < ApplicationController
   def index
     @products = Product.all
+    @product = Product.new
+    @product_category = ProductCategory.all
   end
 
   def new
     @product = Product.new
+    @product_category = ProductCategory.new
   end
 
   def create
@@ -12,6 +15,9 @@ class Admin::ProductsController < ApplicationController
     @product.save
     redirect_to admin_product_path(@product)
   end
+
+
+
 
   def show
     @product = Product.find(params[:id])
@@ -29,6 +35,7 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
   end
+
 
 private
 def product_params

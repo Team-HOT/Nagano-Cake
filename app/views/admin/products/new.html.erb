@@ -1,4 +1,6 @@
 <h1>商品　新規登録画面</h1>
+<h1>新規投稿</h1>
+
 
 <!-- 商品登録フォーム -->
 <%= form_for(@product, url: admin_products_path) do |f| %>
@@ -20,6 +22,7 @@
 
 <h4>販売ステータス</h4>
 <%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %><br>
+
 
 <%= f.submit '新規登録' %>
 <% end %>
