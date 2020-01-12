@@ -5,4 +5,7 @@ class EndUser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
          acts_as_paranoid
+
+  has_many :deliveries, dependent: :destroy
+  accepts_nested_attributes_for :deliveries
 end
