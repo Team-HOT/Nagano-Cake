@@ -1,5 +1,4 @@
 class Admin::ProductCategoriesController < ApplicationController
-
   def create
   	@product_category = ProductCategory.new(product_category_params)
     @product_category.save
@@ -9,6 +8,7 @@ class Admin::ProductCategoriesController < ApplicationController
   def index
   	@product_category = ProductCategory.new
   	@product_categories = ProductCategory.all
+
   end
 
   def edit
@@ -27,3 +27,6 @@ def product_category_params
 end
 
 end
+
+
+

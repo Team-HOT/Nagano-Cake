@@ -1,0 +1,2 @@
+module Public::ProductCategoriesHelper
+end
