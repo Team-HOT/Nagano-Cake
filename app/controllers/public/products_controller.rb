@@ -4,13 +4,11 @@ class Public::ProductsController < ApplicationController
     @product = Product.new
   end
 
-
- def index
- 	@product = Product.new
- 	@products = Product.all
- 	@product_category = ProductCategory.all
- end
-
+def index
+    @products = Product.all
+    @product = Product.new
+    @product_category = ProductCategory.all
+  end
 
  def create
     @product = Product.new(product_params)

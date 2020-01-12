@@ -5,9 +5,10 @@ class Public::ProductCategoriesController < ApplicationController
   end
 
   def index
-  	@product_category = Produc_category.all
-  end
+    @product_category = ProductCategory.new
+    @product_categories = ProductCategory.all
 
+  end
   def create
   	@product_category =  Product_category.new(product_params)
     @product_category.save
