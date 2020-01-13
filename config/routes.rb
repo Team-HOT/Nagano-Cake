@@ -35,12 +35,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-
-
-    resources :products
-    resources :product_categories, only:[:index, :create, :new]
-
-  end
+    resources :product_categories, only:[:index, :create, :new, :show] 
+    resources :products 
+end
+    
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
