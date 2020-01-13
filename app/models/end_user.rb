@@ -7,5 +7,6 @@ class EndUser < ApplicationRecord
          acts_as_paranoid
 
   has_many :deliveries, dependent: :destroy
+  has_many :cart_items, dependent: :destroy
   accepts_nested_attributes_for :deliveries
 end
