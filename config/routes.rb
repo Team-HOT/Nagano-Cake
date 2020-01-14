@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cart/index'
+  get 'cart/show'
    namespace :admin do
      resources :product_images, only: [:new, :create, :index, :show]
     resources :end_users, only:[:index, :show, :edit, :update]
@@ -28,6 +30,7 @@ Rails.application.routes.draw do
         delete 'end_user/destroy_p', to:'end_users#destory_p'
 
     resources :deliveries
+<<<<<<< HEAD
     resources :orders do
       get 'detail', to: :member
     end
@@ -35,6 +38,16 @@ Rails.application.routes.draw do
 
     resources :cart_items
 
+=======
+    resources :orders
+
+    resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
+      delete 'destroy_all', on: :member
+    end
+      delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
+
+  
+>>>>>>> 5f2a0144b18b0b404313dffc2f2c3dfdd37b7e71
   end
 
   namespace :public do
