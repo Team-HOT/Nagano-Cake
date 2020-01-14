@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
-
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
@@ -29,8 +28,12 @@ Rails.application.routes.draw do
         delete 'end_user/destroy_p', to:'end_users#destory_p'
 
     resources :deliveries
-    resources :orders
-    resources :cart_items, only: [:index]
+    resources :orders do
+      get 'detail', to: :member
+    end
+     get 'end_user/detail', to: 'end_users#detail'
+
+    resources :cart_items
 
   end
 
@@ -38,7 +41,6 @@ Rails.application.routes.draw do
     resources :product_categories, only:[:index, :create, :new, :show] 
     resources :products 
 end
-    
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

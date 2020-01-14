@@ -21,9 +21,15 @@ class Admin::ProductCategoriesController < ApplicationController
   	redirect_to admin_product_categories_path
   end
 
+  def destroy
+    @product_category = ProductCategory.find(params[:id])
+    @product_category.destroy
+    redirect_to admin_product_categories_path
+  end
+
 private
 def product_category_params
-    params.require(:product_category).permit(:id, :product_category_name)
+    params.require(:product_category).permit(:id, :product_category_name, :product_category_status)
 end
 
 end

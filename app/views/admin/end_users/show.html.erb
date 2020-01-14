@@ -1,1 +1,29 @@
 <h1>会員詳細画面</h1>
+
+<div>顧客ID  <%= @end_user.id %>
+<!-- 会員ステータスを表示 -->
+<% case @end_user.deleted? when false %>
+	<div>有効</div>
+	<% when true %>
+	<div>退会済</div>
+<% end %>
+</div>
+<br>
+
+<div>氏名  <%= @end_user.name1 %> <%= @end_user.name2 %></div><br>
+
+<div>フリガナ  <%= @end_user.name3 %> <%= @end_user.name4 %></div><br>
+
+<div>郵便番号  <%= @end_user.post %></div><br>
+
+<div>住所  <%= @end_user.address %></div><br>
+
+<div>電話番号  <%= @end_user.number %></div><br>
+
+<div>メールアドレス  <%= @end_user.email %></div><br>
+
+
+<%= link_to "編集する", edit_admin_end_user_path(@end_user) %>
+
+<!-- 該当顧客の注文履歴へのリンク作成する -->
+<%= link_to "注文履歴一覧を見る" %>
