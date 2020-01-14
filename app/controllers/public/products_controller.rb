@@ -1,4 +1,5 @@
 class Public::ProductsController < ApplicationController
+
  def category_show
  	@product = Product.find(params[:id])
  	@product_categories = ProductCategory.find(params[:id])
@@ -10,7 +11,6 @@ class Public::ProductsController < ApplicationController
  	@product_new = Product.new
  	@product_categories = ProductCategory.all
  end
-
 
 
 

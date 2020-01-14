@@ -4,7 +4,7 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         acts_as_paranoid
+acts_as_paranoid
 
   has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy

@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
    namespace :admin do
-     resources :product_images, only: [:new, :create, :index, :show]
-    resources :end_users, only:[:index, :show, :edit, :update]
-
+    resources :product_images, only: [:new, :create, :index, :show]
   end
   namespace :admin do
-    resources :product_categories, only:[:index, :new, :create, :edit, :update]
+    resources :end_users, only:[:index, :show, :edit, :update, :destroy]
+  end
+  namespace :admin do
+    resources :product_categories, only:[:index, :new, :create, :edit, :update, :destroy]
   end
   namespace :admin do
     resources :products
@@ -31,14 +32,13 @@ Rails.application.routes.draw do
     resources :deliveries
     resources :orders
     resources :cart_items, only: [:index]
-
   end
 
   namespace :public do
     resources :product_categories, only:[:index, :create, :new, :show] 
-    resources :products 
-end
-    
+    resources :products
+  end
+
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
