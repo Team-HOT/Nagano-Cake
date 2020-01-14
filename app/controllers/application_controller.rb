@@ -23,6 +23,18 @@ before_action :configure_permitted_parameters, if: :devise_controller?
  def after_sign_in_path_for(resource)
     public_end_user_path(resource)
  end
+ def current_cart_item
+  begin
+   CartItem.find(session[:cart_item_id])
+   rescue ActiveRecord::RecordNotFound
+   cart_item = CartItem.crete
+   session[:cart_item_id] = cart_item.id
+   end
+ end
+ def log_out
+  session.delete(end_user.id)
+  @current_end_user = nil
+ end
 
 
 

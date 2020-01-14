@@ -1,10 +1,12 @@
 class Public::ProductsController < ApplicationController
 
+
  def category_show
  	@product = Product.find(params[:id])
  	@product_categories = ProductCategory.find(params[:id])
 
  end
+
 
  def show
  	@product = Product.find(params[:id])
@@ -23,3 +25,4 @@ class Public::ProductsController < ApplicationController
 	params.require(:product_category).permit(:name)
  end
 end
+

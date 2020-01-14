@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cart/index'
+  get 'cart/show'
    namespace :admin do
     resources :product_images, only: [:new, :create, :index, :show]
   end
@@ -31,7 +33,13 @@ Rails.application.routes.draw do
 
     resources :deliveries
     resources :orders
-    resources :cart_items, only: [:index]
+
+    resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
+      delete 'destroy_all', on: :member
+    end
+      delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
+
+  
   end
 
   namespace :public do
