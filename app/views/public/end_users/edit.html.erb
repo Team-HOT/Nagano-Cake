@@ -2,38 +2,49 @@
 
 <%= link_to "退会する", public_end_user_withdraw_path(current_end_user.id) %>
 
-<p>編集</p>
 
-<%= form_for(@end_user, url: public_end_user_path(current_end_user.id)) do |f| %>
-<table>
-	<tr>
-		<th><%= f.label :氏名 %></th>
+<% if @end_user.errors.any? %>
+<div class="alert-alert-warining">
+	<p class="error-count">
+		<%= @end_user.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
+		<ul>
+			<% @end_user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+
+	<%= form_for(@end_user, url: public_end_user_path(current_end_user.id)) do |f| %>
+	<table>
+		<tr>
+			<th><%= f.label :氏名 %></th>
 			<td><%= f.text_field :name1 %></td>
 			<th><%= f.text_field :name2 %></th>
-	</tr>
-	<tr>
-		<th><%= f.label :カナ %></th>
+		</tr>
+		<tr>
+			<th><%= f.label :カナ %></th>
 			<td><%= f.text_field :name3 %></td>
 			<td><%= f.text_field :name4 %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :郵便番号 %></th>
+		</tr>
+		<tr>
+			<th><%= f.label :郵便番号 %></th>
 			<td><%= f.text_field :post %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :住所 %></th>
+		</tr>
+		<tr>
+			<th><%= f.label :住所 %></th>
 			<td><%= f.text_field :address %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :電話番号 %></th>
+		</tr>
+		<tr>
+			<th><%= f.label :電話番号 %></th>
 			<td><%= f.text_field :number %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :メールアドレス %></th>
+		</tr>
+		<tr>
+			<th><%= f.label :メールアドレス %></th>
 			<td><%= f.text_field :email %></td>
-	</tr>
-</table>
-<%= f.submit '編集内容を保存する' %>
+		</tr>
+	</table>
+	<%= f.submit '編集内容を保存する' %>
 
 
-<% end %>
+	<% end %>
