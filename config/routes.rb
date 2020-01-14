@@ -35,8 +35,8 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    resources :product_categories, only:[:index, :create, :new, :show] 
     resources :products
-    resources :product_categories, only:[:index, :create, :new]
   end
 
   devise_for :admins

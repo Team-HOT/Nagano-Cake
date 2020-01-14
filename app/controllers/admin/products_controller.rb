@@ -3,6 +3,9 @@ class Admin::ProductsController < ApplicationController
     @products = Product.all
     @product = Product.new
     @product_category = ProductCategory.all
+    @products.each do |a|
+      puts a.product_category.product_category_name
+    end
   end
 
   def new
