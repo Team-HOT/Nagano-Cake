@@ -17,8 +17,12 @@
 
 
 <%= render 'public/products/sidemenu' %>
+<<<<<<< HEAD
+<%= attachment_image_tag @product, :product_image, :fill, 300, 300, fallback: "no_image.jpg",size:'300x300',format: 'no_image.jpg' %>
+=======
 
 <%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
+>>>>>>> 5f2a0144b18b0b404313dffc2f2c3dfdd37b7e71
 
 
 <%= form_for(current_end_user.cart_items.build,url: public_cart_items_path) do |f| %>

@@ -1,5 +1,7 @@
 class Public::ProductCategoriesController < ApplicationController
   def index
+    @product_new = Product.new
+    @product = Product.all
     @product_category = ProductCategory.new
     @product_categories = ProductCategory.all
   end

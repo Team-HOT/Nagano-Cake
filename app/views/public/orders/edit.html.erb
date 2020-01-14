@@ -1,0 +1,25 @@
+<h1>注文情報確認ページ</h1>
+
+<h3>購入情報入力</h3>
+<h3>支払い方法</h3>
+<h3>クレジットカード</h3>
+<h3>銀行振込</h3>
+
+<h3>お届け先</h3>
+<h3>ご自身の住所</h3>
+
+
+
+
+
+
+
+
+
+<%= form_for(@order,url:edit_public_order_path(@order.id)) do |f| %>
+		<div class="field">
+		<%= f.radio_button :payment, "クレジットカード" %>
+		</div>
+ <div class="actions">
+  <%= f.submit '注文を確定する' %>
+<% end %>
