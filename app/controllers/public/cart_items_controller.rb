@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 	def index
-	
+		@end_user = current_end_user
+		@product_item = @end_user.cart_items
 	end
 
 
@@ -21,7 +22,7 @@ class Public::CartItemsController < ApplicationController
 		@product = CartItem.find(params[:id])
 
 		@product.destroy
-		redirect_to public_end_users_path
+		redirect_to public_cart_items_path
 	end
 
 	def destroy_all
