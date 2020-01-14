@@ -1,6 +1,5 @@
 class Public::OrdersController < ApplicationController
 	def new
-	end
 
 
 
@@ -8,6 +7,7 @@ class Public::OrdersController < ApplicationController
 
 
 
+end
 
 end
 

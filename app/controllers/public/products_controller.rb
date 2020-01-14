@@ -1,20 +1,4 @@
 class Public::ProductsController < ApplicationController
-
- 
-
-# def index
-#     @products = Product.where(product_category_id: 1)
-#     @product = Product.new
-#     @product_categories = ProductCategory.all
-
-#   end
-
- def create
-    @product = Product.new(product_params)
-    @product.save
-    redirect_to admin_product_path(@product.id)
-  end
-
  def category_show
  	@product = Product.find(params[:id])
  	@product_categories = ProductCategory.find(params[:id])
