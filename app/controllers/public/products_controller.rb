@@ -7,7 +7,7 @@ class Public::ProductsController < ApplicationController
 def index
     @products = Product.all
     @product = Product.new
-    @product_category = ProductCategory.all
+    @product_categories = ProductCategory.all
   end
 
  def create

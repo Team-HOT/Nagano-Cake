@@ -27,7 +27,7 @@ class Public::ProductCategoriesController < ApplicationController
 
  private
  def product_category_params
-     params.require(:product_category).permit(:product_category_name)
+     params.require(:product_category).permit(:product_category_name, :product_category_status)
 end
 
 

@@ -5,8 +5,10 @@
 <%= form_for(@product_category, url: admin_product_categories_path) do |f| %>
 	<div>ジャンル
 	<%= f.text_field :product_category_name %>
-	<label><%= f.radio_button :product_category_status, "有効" %>有効</label>
-	<label><%= f.radio_button :product_category_status, "無効" %>無効</label>
+	<%= f.radio_button(:product_category_status, "有効") %>
+	<%= f.label(:product_category_status, "有効", value: "有効") %>
+	<%= f.radio_button(:product_category_status, "無効") %>
+	<%= f.label(:product_category_status, "無効", value: "無効") %>
 	<%= f.submit '追加' %>
 	</div>
 <% end %>
