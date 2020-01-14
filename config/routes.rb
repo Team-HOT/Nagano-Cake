@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
+
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
 
     resources :deliveries
     resources :orders
-    resources :cart_items
+    resources :cart_items, only: [:index]
 
   end
 
@@ -38,8 +39,6 @@ Rails.application.routes.draw do
     resources :products 
 end
     
-    
-  
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
