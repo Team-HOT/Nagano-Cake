@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   get 'cart/index'
   get 'cart/show'
    namespace :admin do
-     resources :product_images, only: [:new, :create, :index, :show]
-    resources :end_users, only:[:index, :show, :edit, :update]
-
+    resources :product_images, only: [:new, :create, :index, :show]
   end
   namespace :admin do
-    resources :product_categories, only:[:index, :new, :create, :edit, :update]
+    resources :end_users, only:[:index, :show, :edit, :update, :destroy]
+  end
+  namespace :admin do
+    resources :product_categories, only:[:index, :new, :create, :edit, :update, :destroy]
   end
   namespace :admin do
     resources :products
@@ -32,20 +33,20 @@ Rails.application.routes.draw do
 
     resources :deliveries
     resources :orders
+
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member
     end
       delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
 
+  
   end
 
   namespace :public do
-
-
+    resources :product_categories, only:[:index, :create, :new, :show] 
     resources :products
-    resources :product_categories, only:[:index, :create, :new]
-
   end
+
   devise_for :admins
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
