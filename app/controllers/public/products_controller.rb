@@ -1,21 +1,7 @@
 class Public::ProductsController < ApplicationController
-	# def index
-	#     @products = Product.where(product_category_id: 1)
-	#     @product = Product.new
-	#     @product_categories = ProductCategory.all
-
-	#   ends
-
-	def create
-	@product = Product.new(product_params)
-	@product.save
-	redirect_to admin_product_path(@product.id)
-	end
-
 	def category_show
 		@product = Product.find(params[:id])
 		@product_categories = ProductCategory.find(params[:id])
-
 	end
 
 	def show
@@ -24,11 +10,7 @@ class Public::ProductsController < ApplicationController
 		@product_categories = ProductCategory.all
 	end
 
-
-
-
-
-	    private
+	 private
 	 def product_params
 	    params.require(:product).permit(:name, :price, :product_body, :product_image, :product_category_id, :sale_status)
 	 end
