@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'order_items/index'
+    get 'order_items/show'
+    get 'order_items/update'
+  end
    namespace :admin do
     resources :product_images, only: [:new, :create, :index, :show]
   end
@@ -13,6 +18,9 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :orders, only:[:index, :show, :update]
+  end
+    namespace :admin do
+    resources :order_items, only:[:index, :show, :update]
   end
   namespace :admin do
     get '/home', to:'home#top'
