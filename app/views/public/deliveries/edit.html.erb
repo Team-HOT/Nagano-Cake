@@ -1,4 +1,15 @@
 <p>配送先編集ページ</p>
+  <% if @delivery.errors.any? %>
+   <div class="alert-alert-warining">
+	<p class="error-count">
+		<%= @delivery.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
+		<ul>
+			<% @delivery.errors.full_messages.each do |message| %>
+			  <li><%= message %></li>
+			<% end %>
+		</ul>
+   </div>
+  <% end %>
 
 <%= form_for(@delivery, url: public_delivery_path) do |f| %>
 

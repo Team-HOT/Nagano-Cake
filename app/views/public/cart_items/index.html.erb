@@ -1,14 +1,46 @@
 <h1>ショッピングカート</h1>
+<%= link_to "カートを空にする", destroy_all_public_cart_item_path(current_end_user.cart_items), method: :delete %>
+<% @total = 0 %>
 <table>
 	<thead>
-	<tr>
-		<th>商品名</th>
-		<th>単価</th>
-		<th>数量</th>
-		<th>小計</th>
-		<th colspan="5"></th>
-	</tr>
+		<tr>
+			<th>商品名</th>
+			<th>単価(税込)</th>
+			<th>数量</th>
+			<th>小計</th>
+		</tr>
 	</thead>
 	<tbody>
-	<th>
+
+		<% current_end_user.cart_items.each do |item| %>
+		<tr>
+			<td><%= item.product.name %></td>
+			<td><%= item.product.price %></td>
+			<%= form_for(item, url: public_cart_item_path(item)) do |f| %>
+			<td><%= f.number_field :quentity %></td>
+			<td><%= f.submit "変更" %></td>
+			<% end %>
+
+			<td><%= item.product.price * item.quentity %></td>
+
+			<% @subtotal = item.product.price * item.quentity %>
+			<% @total += @subtotal %>
+
+			<td><%= link_to "削除", public_cart_item_path(item), method: :delete %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+<p>買い物を続ける</p>
+<table>
+	<tr><p>合計金額</p></tr>
+    <td><%= @total %></td>
+</table>
+<p>情報入力画面に進む</p>
+
+
+
+
+
+
 

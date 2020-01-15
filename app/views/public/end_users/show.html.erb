@@ -1,4 +1,22 @@
 <h2>header</h2>
+<header>
+	<nav>
+		<ul>
+			<li><%= link_to "カート", public_cart_items_path %></li>
+			<li><%= link_to "マイページ", public_end_user_path(current_end_user) %></li>
+			<li><p>about</p></li>
+			<li><p>商品一覧へ</p></li> <%# product_indexへ %>
+			<li><%= link_to "ログアウト", destroy_end_user_session_path,method: :delete %></li>
+
+		</ul>
+	</nav>
+</header>
+
+
+
+
+
+
 <h1>マイページ</h1>
 
 <h3>登録情報</h3>
@@ -38,3 +56,6 @@
 <br>
 
 注文履歴<%= link_to "一覧を見る", public_orders_path %>
+
+
+

@@ -1,8 +1,10 @@
 class Public::ProductCategoriesController < ApplicationController
- def index
+  def index
+    @product_new = Product.new
+    @product = Product.all
     @product_category = ProductCategory.new
     @product_categories = ProductCategory.all
- end
+  end
 
 
   def edit
@@ -20,7 +22,7 @@ class Public::ProductCategoriesController < ApplicationController
   def update
   end
 
- private
+  private
   def product_category_params
      params.require(:product_category).permit(:product_category_name,  :product_category_id)
   end
