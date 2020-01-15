@@ -1,11 +1,13 @@
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header' %>
+
 <h1>会員詳細画面</h1>
 
-<div>顧客ID  <%= @end_user.id %>
-<!-- 会員ステータスを表示 -->
-<% case @end_user.deleted? when false %>
-	<div>有効</div>
-	<% when true %>
-	<div>退会済</div>
+<div>顧客ID
+<%= @end_user.id %>
+<!-- 会員ステータスの表示 -->
+<% case @end_user.deleted? when false %> 有効会員
+<% when true %> 退会済
 <% end %>
 </div>
 <br>

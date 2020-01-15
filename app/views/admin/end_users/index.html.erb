@@ -1,5 +1,7 @@
-<h1>会員一覧画面</h1>
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header' %>
 
+<h1>会員一覧画面</h1>
 <table>
 	<thead>
 		<tr>
@@ -10,11 +12,14 @@
 		</tr>
 	</thead>
 	<% @end_user.each do |end_user| %>
+	<% name1 = end_user.name1 %>
+	<% name2 = end_user.name2 %>
+	<% full_name = name1+name2 %>
 	<tbody>
 		<tr>
 			<td><%= end_user.id %></td>
 			<!-- フルネームを選択できるようにしたい -->
-			<td><%= link_to end_user.name1, admin_end_user_path(end_user.id) %></td>
+			<td><%= link_to full_name, admin_end_user_path(end_user.id) %></td>
 			<!-- 会員ステータスの表示 -->
 			<td><%= end_user.email %></td>
 			<% case end_user.deleted? when false %>
