@@ -33,6 +33,7 @@ Rails.application.routes.draw do
         delete 'end_user/destroy_p', to:'end_users#destory_p'
 
     resources :deliveries
+
     resources :orders
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do

@@ -1,18 +1,44 @@
-<h1>トップページ</h1>
-<h4>ジャンル検索</h4>
-	<% @product_categories.each do |category| %>
-	<%= link_to public_product_category_path(category.id) do %>
-	<%= category.product_category_name %>
-		<% end %>
-		<% end %>
 
 
-<% @product.each do |products| %>
-<%= link_to public_product_categories_path do  %>
-<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
-　　<% end %>
-<span><%= products.name %></span><br>
-<span><%= products.price %></span><br>
+
+
+<%= render 'public/products/sidemenu' %>
+
+<div class= col-xs-9>
+   <div class="main">
+<%= image_tag'スイーツ.jpg', size:'950x570'%>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="container">
+
+  <% @product.each do |products| %>
+
+	<%= link_to public_product_path(products.id) do  %>
+
+	  <div class="item">
+
+	    <%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
+	    <p class="font1">
+	    <span><%= products.name %></span><br>
+		<span><%= products.price %></span><br>
+	  </div>
+
+	<% end %>
 <% end %>
+<nav>
+<div><%= paginate  @product %></div>
+</nav>
 
+
+
+
+ 
 
