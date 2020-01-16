@@ -1,3 +1,6 @@
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header' %>
+
 <h1>会員編集画面</h1>
 
   <% if @end_user.errors.any? %>
@@ -30,12 +33,11 @@
 	<p>メールアドレス</p>
 		<%= f.text_field :email %>
 	<p>会員ステータス</p>
-
-		<div><%= f.radio_button(:deleted_at, "有効") %>
-		<%= f.label(:deleted_at, "有効", value: "有効") %></div>
-		<div><%= f.radio_button(:deleted_at, "退会済み") %>
-		<%= f.label(:deleted_at, "退会済み", value: "退会済み") %>
-		</div>
+	<div><%= radio_button_tag(:num, 0) %>
+	<%= label_tag(:num_0, "有効") %>
+	<%= radio_button_tag(:num, 1) %>
+	<%= label_tag(:num_1, "退会済み") %>
+	</div>
 	<br>
 	<%= f.submit '変更を保存する' %>
 <% end %>

@@ -26,18 +26,17 @@
 			<% @subtotal = item.product.price * item.quentity %>
 			<% @total += @subtotal %>
 
-
-
-
 			<td><%= link_to "削除", public_cart_item_path(item), method: :delete %></td>
 		</tr>
 	</tbody>
 	<% end %>
 </table>
+<p>買い物を続ける</p>
 <table>
 	<tr><p>合計金額</p></tr>
     <td><%= @total %></td>
 </table>
+<p>情報入力画面に進む</p>
 
 
 

@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'cart/index'
-  get 'cart/show'
+  namespace :admin do
+    resources :order_items, only:[:index, :show, :update]
+  end
    namespace :admin do
-     resources :product_images, only: [:new, :create, :index, :show]
+    resources :product_images, only: [:new, :create, :index, :show]
     resources :end_users, only:[:index, :show, :edit, :update]
-
   end
   namespace :admin do
     resources :product_categories, only:[:index, :new, :create, :edit, :update]
@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :orders, only:[:index, :show, :update]
+  end
+    namespace :admin do
+    resources :order_items, only:[:index, :show, :update]
   end
   namespace :admin do
     get '/home', to:'home#top'
@@ -31,21 +34,12 @@ Rails.application.routes.draw do
 
     resources :deliveries
 
-    resources :orders do
-      get 'detail', to: :member
-    end
-     get 'end_user/detail', to: 'end_users#detail'
-
-    resources :cart_items
-
     resources :orders
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member
     end
       delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
-
-
   end
 
   namespace :public do
