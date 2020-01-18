@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
     root :to => 'homes#top'
     get 'about', to:'homes#about'
-    
+
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
@@ -52,10 +52,7 @@ Rails.application.routes.draw do
       post 'create_order', to:'cart_items#create_order'
 
       resources :oreder_items
-
   end
-
-
   namespace :public do
     resources :product_categories, only:[:index, :create, :new, :show]
     resources :products

@@ -1,13 +1,14 @@
 
- <div id= "home" class="big-bg">
-	<div class="home-content wrapper">
-		<nav><h2 class="page-title">We'll Make Your Day</h2></nav>
-		<nav><p>誰かと食べるケーキ。一人で食べるケーキ。どっちも幸せ。</p></nav>
+<%= render 'public/homes/heder' %>
+<div id= "home" class="big-bg">
+<div class="home-content wrapper">
+	<nav><h2 class="page-title">We'll Make Your Day</h2></nav>
+	<nav><p>誰かと食べるケーキ。一人で食べるケーキ。どっちも幸せ。</p></nav>
 
-	<div class="button_wrapper">
-				<p><%= link_to "商品一覧ページへ", public_product_categories_path, class: 'btn' %></p>
-			<nav>
-			</nav>
-		</div>
-	</div>
+<div class="button_wrapper">
+    <p><%= link_to "商品一覧ページへ", public_product_categories_path, class: 'btn' %></p>
 </div>
+</div>
+</div>
+<style>
+	
