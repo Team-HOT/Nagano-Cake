@@ -1,13 +1,30 @@
-<!-- header用のdiv -->
-<div class="header">
-<%= image_tag 'jpg2.jpg',size:'50x50' %>
+
+
+<div class= "row"></div>
+<div class= "col-xs-3">
+<h2>ジャンル検索</h2>
+<table class="table">
+<thead>
+	<tr></tr>
+	<div class="alert alert-warning" role="alert">
+<% @product_categories.each do |category| %>
+
+<% if category.product_category_status == "有効" %>
+<%= link_to public_product_category_path(category.id) do %>
+<h3><font color="#871900"><%= category.product_category_name %><h3>
+</tr>
+</p>
+<% end %>
+<% end %>
+<% end %>
+</thead>
+</table>
 </div>
-<div class="container-fluid">
-<div class="col-sm-4 sidenav">
-<h4>ジャンル検索</h4>
-	<% @product_categories.each do |category| %>
-	<%= link_to public_product_category_path(category.id) do %>
-	<%= category.product_category_name %>
-		<% end %>
-		<% end %>
-</div>
+
+<br>
+
+
+
+
+
+

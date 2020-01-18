@@ -1,25 +1,35 @@
-<h1>商品編集画面</h1>
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header', products: @products %>
 
-<!-- 商品編集フォーム -->
-<%= form_for(@product, url: admin_product_path(@product)) do |f| %>
+<div class="container">
+	<div class="row">
+		<h3>商品編集画面</h3><br>
+				<!-- 商品編集フォーム -->
+				<%= form_for(@product, url: admin_product_path(@product)) do |f| %>
+				<div class="col-xs-3">
+					<%= attachment_image_tag @product, :product_image, :fill, 240, 170, format:'jpeg' %><br><br>
+					<%= f.attachment_field :product_image %>
+			    </div>
+				<div class="row">
+				<div class="col-xs-8">
+					<h4>商品名</h4>
+					<%= f.text_field :name %>
 
-<%= attachment_image_tag @product, :product_image, :fill, 240, 170, format:'jpeg' %><br>
-<%= f.attachment_field :product_image %>
+					<h4>商品説明</h4>
+					<%= f.text_field :product_body %>
 
-<h4>商品名</h4>
-<%= f.text_field :name %>
+					<h4>ジャンル</h4>
+					<%= f.collection_select :product_category_id, ProductCategory.all, :id, :product_category_name %>
 
-<h4>商品説明</h4>
-<%= f.text_field :product_body %>
+					<h4>税抜価格</h4>
+					<%= f.text_field :price %>円
 
-<h4>ジャンル</h4>
-<%= f.collection_select :product_category_id, ProductCategory.all, :id, :product_category_name %>
-
-<h4>税抜価格</h4>
-<%= f.text_field :price %>円
-
-<h4>販売ステータス</h4>
-<%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %><br>
-
-<%= f.submit '変更を保存する' %>
-<% end %>
+					<h4>販売ステータス</h4>
+					<%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %><br>
+					<br>
+					<%= f.submit '変更を保存する' %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
