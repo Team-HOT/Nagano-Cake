@@ -14,18 +14,14 @@
 					</tr>
 				</thead>
 				<tbody>
+					<% @order_items.each do |item| %>
 					<tr>
-						<td>2019/11/16 09:25:38</td>
-						<td>保坂冨美子</td>
-						<td>1</td>
-						<td>入金待ち</td>
+						<td><%= item.created_at.in_time_zone('Tokyo') %></td>
+						<td></td>
+						<td><%= item.order.quantity %></td>
+						<td></td>
 					</tr>
-					<tr>
-						<td>2019/11/18 23:55:12</td>
-						<td>林田英世</td>
-						<td>10</td>
-						<td>入金確認</td>
-					</tr>
+					<% end %>
 				</tbody>
 			</table>
 		</div>

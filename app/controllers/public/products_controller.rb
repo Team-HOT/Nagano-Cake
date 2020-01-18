@@ -20,8 +20,6 @@ class Public::ProductsController < ApplicationController
 
 
 
-
-
  private
  def product_params
     params.require(:product).permit(:name, :price, :product_body, :product_image, :product_category_id, :sale_status)
