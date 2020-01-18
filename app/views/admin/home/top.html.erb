@@ -1,14 +1,12 @@
 <!-- ヘッダー部分 -->
 <%= render 'admin/products/header' %>
 
-<ul>
-	<li><%= link_to "商品一覧", admin_products_path %></li>
-	<li><%= link_to "会員一覧", admin_end_users_path %></li>
-	<li><%= link_to "注文履歴一覧", admin_order_items_index_path %></li>
-	<li><%= link_to "ジャンル管理", admin_product_categories_path %></li>
-</ul>
-
-<h1>管理者画面</h1>
-<p>本日の注文件数 <%= link_to "●", admin_order_items_index_path %> 件</p>
-
-<%= link_to "logout", destroy_admin_session_path, method: :delete %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>管理者画面</h3>
+			<br><br>
+			<h4>本日の注文件数 <%= link_to "●", admin_order_items_path %> 件</h4>
+		</div>
+	</div>
+</div>
