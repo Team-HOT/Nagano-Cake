@@ -17,94 +17,17 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
-  *{
-  box-sizing: border-box;
- }
-
-.item {
-	margin: 5px;
-	padding: 10px;
-}
-
-.container2 {
- display :flex;
- flex-wrap:wrap;
-}
 
 
-.item2 {
-	margin: 10px;
-	padding: 10px;
-}
-
-p.font {
-    font-1color: #871900;
-}
 
 
-.main {
-	float: right;
-
-}
-
-
+//背景のカラー//
 body {
 background-color:#d3c1af;
 }
+//ここまで//
 
-
-.box {
-  padding: 80px;
-}
-
-.header {
-  color: #871900;
-}
-
-
-.main-nav {
-	display: flex;
-	font-size: 3rem;
-	text-trnsform: uppercase;
-	margin-top: 34px;
-	list-style: none;
-}
-
-.main-nav li {
-	margin-left: 36px;
-}
-
-
-.main-nav a {
-	color: #871900;
-}
-
-
-.main-nav a:hover {
-	color: #0bd;
-}
-
-
-
-.page-header {
-	display: flex;
-	justify-content: space-between;
-}
-
-strong {
-	font-size: 5rem;
-	color: #871900;
-	margin-top: 20px;
-	margin-bottom: 0px;
-	padding: 10px;
-}
-
-.wrapper {
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 0 4%;
-}
-
+//背景画像の指定と画面の大きさの指定//
 #home {
 	background-image: url(スイーツ.jpg);
 	min-height: 100vh;
@@ -115,18 +38,6 @@ strong {
 	align-items: center;
 }
 
-#home .page-title {
-	text-transform: none;
-}
-
-
-.home-content{
-	text-align: center;
-	background-color: rgba(260,200,200,0.5);
-	border-radius: 20px;
-}
-
-
 .page-title {
 	margin-top: 0;
 	font-size: 5rem;
@@ -134,55 +45,16 @@ strong {
 	text-transform: uppercase;
 	font-weight: normal;
 }
-
- .btn {
-	font-size: 1.375rem;
-	color: #e5b7be;
-	background:  #e5b7be;
-	border-radius: 5px;
-	padding: 18px 32px;
-
-}
-
-.clearfix::after {
-	content: "";
-	display: block;
-	clear: both;
-}
+//ここまで//
 
 
 
 
-.container3 {
-	display: flex;
-	justify-content:center;
-	margin-top: 100px;
-}
-
-
-.button-wrapper{
-	text-align:center;
-}
 
 
 
 
-.img {
-	padding: 10px;
-	margin-top:5px;
-}
 
 
-
-.home-content p {
-	font-size: 1/125rem;
-
-}
-
-
-.container {
- display :flex;
- flex-direction: row-reverse;
-}
 
 
