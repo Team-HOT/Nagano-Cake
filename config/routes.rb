@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
 
-    # root :to => 'homes#top'
-    post '/home', to:'homes#top'
+    root :to => 'homes#top'
 
     root :to => 'homes#top'
     get 'about', to:'homes#about'
@@ -41,9 +40,11 @@ Rails.application.routes.draw do
     resources :deliveries
 
     resources :orders do
-    get 'confirm',on: :collection
-  end
-  post 'oeders/confirm', to:'orders#confirm'
+
+      get 'confirm', on: :collection
+    end
+    post 'orders/confirm', to:'orders#confirm'
+
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member
@@ -51,8 +52,7 @@ Rails.application.routes.draw do
     end
       delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
       post 'create_order', to:'cart_items#create_order'
-  
-  
+
       resources :oreder_items
 
   end
@@ -62,8 +62,6 @@ Rails.application.routes.draw do
     resources :product_categories, only:[:index, :create, :new, :show]
     resources :products
 end
-  devise_for :admins
-  devise_for :end_user
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }

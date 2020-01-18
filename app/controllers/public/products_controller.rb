@@ -13,6 +13,7 @@ class Public::ProductsController < ApplicationController
  	@product = Product.find(params[:id])
  	@product_new = Product.new
  	@product_categories = ProductCategory.all
+ 	@cart_item = CartItem.new
  end
 
 
