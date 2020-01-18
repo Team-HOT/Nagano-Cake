@@ -23,8 +23,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
 
-    # root :to => 'homes#top'
-    post '/home', to:'homes#top'
+    root :to => 'homes#top'
 
     root :to => 'homes#top'
     get 'about', to:'homes#about'
@@ -43,7 +42,7 @@ Rails.application.routes.draw do
     resources :orders do
       get 'confirm', on: :collection
     end
-      post 'orders/confirm', to:'orders#confirm'
+    post 'orders/confirm', to:'orders#confirm'
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member

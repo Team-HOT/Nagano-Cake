@@ -2,7 +2,7 @@
 
 <h3>購入情報入力</h3>
 <h3>支払い方法</h3>
-<%= form_for(@order, url: confirm_public_orders_path ) do |a| %>
+<%= form_for(@order, url: confirm_public_orders_path) do |a| %>
 <%= a.radio_button(:payment, "クレジットカード") %>クレジットカード
 
 <%= a.radio_button(:payment, "銀行振り込み") %>銀行振り込み

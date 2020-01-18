@@ -35,6 +35,7 @@
 </tbody>
 </table>
 <% end %>
+
 <%= form_for(@order, url: public_orders_path) do |a| %>
 <h3>支払い方法</h3>
 <%= @payment %>
@@ -45,7 +46,6 @@
 <%= a.hidden_field :Delivery_address %>
 <% @postage %>
 <%= a.hidden_field :postage, :value => "800" %>
-
 <%= a.submit "注文を確定する" %>
 <% end %>
 
