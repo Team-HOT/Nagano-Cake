@@ -29,28 +29,17 @@ def confirm
     @order_item = OrderItem.new
 
 
-
-    # orderテーブルに保存するもの
-
-    # order_itemテーブルに保存するもの
-    # @item_product_neme = current_user.cart_items.product.name
-    # @item_product_price = current_user.cart_items.product.price
-    # @item_product_quantity = current_end_user.cart_item.quantity
-    
-
-
 end
 def create
-    current_end_user.cart_items.each do |items|
-    @order = Order.new(order_params)
-    @order_item = OrderItem.new
-    @order_item = items.product.name
-    @order_item = items.product.price
-    @order_item = items.product
-    
-end
-
+    @order = Order.new(order_params) 
+    # 空箱作成
     @order.save!
+    @order_item = OrderItem.new
+    @order_item.order_id = @order.id
+    current_end_user.cart_items.each do |items|
+      @order_item.order_item_name = items.product.name
+    end
+
     @order_item.save!
     redirect_to public_orders_path
 
@@ -67,4 +56,5 @@ private
 def order_params
     params.require(:order).permit(:postage, :order_status, :quantity, :total_fee, :end_user_id, :delivery_id, :Delivery_address, :Delivery_post, :delivery_name, :payment)
 end
+
 end
