@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   namespace :public do
     root :to => 'homes#top'
+    get 'about', to:'homes#about'
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
