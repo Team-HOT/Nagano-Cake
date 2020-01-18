@@ -22,8 +22,13 @@ Rails.application.routes.draw do
     get '/home', to:'home#top'
   end
   namespace :public do
+
+    # root :to => 'homes#top'
+    post '/home', to:'homes#top'
+
     root :to => 'homes#top'
     get 'about', to:'homes#about'
+    
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
@@ -39,14 +44,23 @@ Rails.application.routes.draw do
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member
+      post 'create_order', on: :member
     end
       delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
+      post 'create_order', to:'cart_items#create_order'
+  
+  
+      resources :oreder_items
+
   end
+
 
   namespace :public do
     resources :product_categories, only:[:index, :create, :new, :show]
     resources :products
 end
+  devise_for :admins
+  devise_for :end_user
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }

@@ -4,6 +4,7 @@ class Public::EndUsersController < ApplicationController
  	@end_user = EndUser.find(params[:id])
  	@product = ProductCategory.find(params[:id])
  	
+
  end
 
 
