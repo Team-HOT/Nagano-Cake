@@ -40,9 +40,11 @@ Rails.application.routes.draw do
     resources :deliveries
 
     resources :orders do
+
       get 'confirm', on: :collection
     end
     post 'orders/confirm', to:'orders#confirm'
+
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member

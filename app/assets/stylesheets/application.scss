@@ -17,19 +17,9 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
- *{
+  *{
   box-sizing: border-box;
  }
-
-
-
-
-
-.container {
- display :flex;
- flex-direction: row-reverse;
-}
-
 
 .item {
 	margin: 5px;
@@ -190,28 +180,9 @@ strong {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.container {
+ display :flex;
+ flex-direction: row-reverse;
+}
 
 

@@ -1,43 +1,86 @@
 <!-- ヘッダー部分 -->
 <%= render 'admin/products/header' %>
 
-<h1>会員編集画面</h1>
+<div class="container">
+	<h3>会員編集画面</h3><br>
+		<div class="row">
+			<div class="form-horizontal">
+				<%= form_for(@end_user, url: admin_end_user_path(@end_user)) do |f| %>
+					<div class="form-group">
+						<label class="control-label col-sm-2">会員ID</label>
+						<div class="col-xs-2">
+						<%= @end_user.id %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">氏名</label>
+						<div class="col-xs-2">
+							<%= f.text_field :name1, class: "form-control"  %>
+						</div>
+						<div class="col-xs-2">
+							<%= f.text_field :name2, class: "form-control" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">カナ</label>
+						<div class="col-xs-2">
+							<%= f.text_field :name3, class: "form-control" %>
+						</div>
+						<div class="col-xs-2">
+							<%= f.text_field :name4, class: "form-control" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">郵便番号</label>
+						<div class="col-xs-2">
+							<%= f.text_field :post, class: "form-control" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">住所</label>
+						<div class="col-xs-5">
+							<%= f.text_field :address, class: "form-control"  %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">電話番号</label>
+						<div class="col-xs-2">
+							<%= f.text_field :number, class: "form-control" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">メールアドレス</label>
+						<div class="col-xs-3">
+							<%= f.text_field :email, class: "form-control" %>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2">会員ステータス</label>
+						<div class="col-xs-5">
+							<%= radio_button_tag(:num, 0) %>
+							<%= label_tag(:num_0, "有効") %>
+							<%= radio_button_tag(:num, 1) %>
+							<%= label_tag(:num_1, "退会済み") %>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-sm-2">
+							<%= f.submit '変更を保存する', class:"btn btn-success btn-block" %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+</div>
 
-  <% if @end_user.errors.any? %>
-   <div class="alert-alert-warining">
-	<p class="error-count">
-		<%= @end_user.errors.full_messages.count %>errors prohibited this end_user from being saved:</p>
-		<ul>
-			<% @end_user.errors.full_messages.each do |message| %>
-			  <li><%= message %></li>
-			<% end %>
-		</ul>
-   </div>
-  <% end %>
 
-<p>会員ID <%= @end_user.id %></p>
-
-<%= form_for(@end_user, url: admin_end_user_path(@end_user)) do |f| %>
-	<p>氏名</p>
-		<%= f.text_field :name1 %>
-		<%= f.text_field :name2 %>
-	<p>カナ</p>
-		<%= f.text_field :name3 %>
-		<%= f.text_field :name4 %>
-	<P>郵便番号</P>
-		<%= f.text_field :post %>
-	<p>住所</p>
-		<%= f.text_field :address %>
-	<p>電話番号</p>
-		<%= f.text_field :number %>
-	<p>メールアドレス</p>
-		<%= f.text_field :email %>
-	<p>会員ステータス</p>
-	<div><%= radio_button_tag(:num, 0) %>
-	<%= label_tag(:num_0, "有効") %>
-	<%= radio_button_tag(:num, 1) %>
-	<%= label_tag(:num_1, "退会済み") %>
-	</div>
-	<br>
-	<%= f.submit '変更を保存する' %>
-<% end %>
+<style>
+	.row {
+		margin-left:  -85px;
+	}
+	.btn-success {
+		background-color: #8FBC8F;
+		color: #FFF;
+		font-size: 13px;
+	}
+</style>
