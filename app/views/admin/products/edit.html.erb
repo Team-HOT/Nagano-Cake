@@ -4,32 +4,57 @@
 <div class="container">
 	<div class="row">
 		<h3>商品編集画面</h3><br>
-				<!-- 商品編集フォーム -->
-				<%= form_for(@product, url: admin_product_path(@product)) do |f| %>
-				<div class="col-xs-3">
-					<%= attachment_image_tag @product, :product_image, :fill, 240, 170, format:'jpeg' %><br><br>
-					<%= f.attachment_field :product_image %>
-			    </div>
-				<div class="row">
-				<div class="col-xs-8">
-					<h4>商品名</h4>
-					<%= f.text_field :name %>
-
-					<h4>商品説明</h4>
-					<%= f.text_field :product_body %>
-
-					<h4>ジャンル</h4>
-					<%= f.collection_select :product_category_id, ProductCategory.all, :id, :product_category_name %>
-
-					<h4>税抜価格</h4>
-					<%= f.text_field :price %>円
-
-					<h4>販売ステータス</h4>
-					<%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %><br>
-					<br>
-					<%= f.submit '変更を保存する' %>
-				<% end %>
+			<!-- 商品編集フォーム -->
+			<%= form_for(@product, url: admin_product_path(@product)) do |f| %>
+			<div class="col-xs-4">
+				<%= attachment_image_tag @product, :product_image, :fill, 300, 230, format:'jpeg', class:"picture" %><br><br>
+				<%= f.attachment_field :product_image %>
 			</div>
-		</div>
+			<div class="form-horizontal">
+				<div class="col-md-8">
+					<div class="form-group">
+						<label class="control-label col-sm-2">商品名</label>
+						<div class="col-xs-2"><%= f.text_field :name%></div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2">商品説明</label>
+						<div class="col-xs-2"><%= f.text_area :product_body %></div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2">ジャンル</label>
+						<div class="col-xs-2"><%= f.collection_select :product_category_id, ProductCategory.all, :id, :product_category_name %></div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2">税抜価格</label>
+						<div class="col-xs-4"><%= f.text_field :price %>円</div>
+					</div>
+
+					<div class="form-group">
+						<label class="control-label col-sm-2">販売ステータス</label>
+						<div class="col-xs-2"><%= f.select :sale_status, {販売中: '販売中', 売切れ: '売切れ'} %></div>
+					</div>
+
+					<div class="form-group">
+					<div class="control-label col-sm-2"><%= f.submit '変更を保存する', class:"btn btn-success btn-block" %>
+					</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
 	</div>
 </div>
+
+
+<style>
+	.picture {
+		object-position: center;
+	}
+	.btn-success {
+		background-color: #8FBC8F;
+		color: #FFF;
+		font-size: 10px;
+	}
+</style>
