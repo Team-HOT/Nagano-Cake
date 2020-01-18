@@ -23,7 +23,7 @@
   <li><%= link_to "about",  public_about_path %></li>
   <li><%= link_to "top",   public_product_categories_path %></li>
   <li><%= link_to "cart", public_cart_items_path %></li>
-  <li><%= link_to "my page",public_end_users_path %></li>
+  <li><%= link_to "my page",public_end_users_path(current_end_user) %></li>
 <%= current_end_user.name1 %>
 <%= current_end_user.name2 %>さん、こんにちは
 <br>

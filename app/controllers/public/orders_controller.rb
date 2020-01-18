@@ -17,7 +17,8 @@ class Public::OrdersController < ApplicationController
 
 end
 def show
-    @order_items = OrderItem.find(params[:id])
+    @order = Order.find(params[:id])
+
 end
 
 def confirm
@@ -41,6 +42,7 @@ def create
       @order_item.order_item_name = items.product.name
       @order_item.order_item_price = items.product.price
       @order_item.product_id = items.product_id
+    　@order_item.quantity = items.quentity
     end
 
     @order_item.save!
@@ -51,6 +53,10 @@ end
 
 def edit
     @order = Order.find(params[:id])
+end
+def index
+    @end_user = current_end_user
+    @orders = Order.all
 end
 
 

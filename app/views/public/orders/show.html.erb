@@ -12,15 +12,21 @@
 		<th>注文詳細</th>
 	</tr>
 </thead>
+	<% current_end_user.orders.each do |i| %>
 <tbody>
-	<%= order.each do |i| %>
 	<tr>
-		<td><%= i.order.created_at %></td>
+		<td><%= i.created_at %></td>
+		<td><%= i.Delivery_address %></td>
+
+	<br>
 
 
+	</tr>
+</tbody>
+	<% end %>
+</table>
 
 
-<% end %>
 
 
 

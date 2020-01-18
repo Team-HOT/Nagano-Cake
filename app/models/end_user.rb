@@ -8,6 +8,5 @@ acts_as_paranoid
   has_many :deliveries, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
-  belongs_to :history
   accepts_nested_attributes_for :deliveries
 end
