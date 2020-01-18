@@ -22,7 +22,9 @@
 					<h4>販売ステータス</h4>
 						<div class="text"><%= @product.sale_status %></div>
 					<br>
+					<div class="control-label col-xs-4">
 					<%= link_to "編集する", edit_admin_product_path(@product.id), class:"btn btn-success btn-block" %>
+					</div>
 				</div>
 			</div>
 	</div>

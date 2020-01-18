@@ -3,8 +3,6 @@ class Public::EndUsersController < ApplicationController
  def show
  	@end_user = EndUser.find(params[:id])
  	@product = ProductCategory.find(params[:id])
- 	
-
  end
 
 
