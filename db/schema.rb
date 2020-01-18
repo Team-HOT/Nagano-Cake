@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_01_12_120522) do
-
+ActiveRecord::Schema.define(version: 2020_01_16_044708) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -93,6 +91,10 @@ ActiveRecord::Schema.define(version: 2020_01_12_120522) do
     t.integer "delively_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payment"
+    t.string "delivery_name"
+    t.text "Delivery_address"
+    t.integer "Delivery_post"
   end
 
   create_table "product_categories", force: :cascade do |t|

@@ -1,0 +1,52 @@
+<h1>注文確認情報</h1>
+<%= form_for(@order_item, url: public_orders_path) do |f| %>
+<% @total = 0 %>
+
+<table>
+<thead>
+	<tr>
+		<th>商品名</th>
+		<th>単価(税込)</th>
+		<th>数量</th>
+		<th>小計</th>
+	</tr>
+</thead>
+<tbody>
+		<% current_end_user.cart_items.each do |item| %>
+		<tr>
+			<td><%= item.product.name %></td>
+			<td><%= item.product.price %></td>
+			<td><%= item.quentity %></td>
+			<td><%= item.product.price * item.quentity %></td>
+			<% @subtotal = item.product.price * item.quentity %>
+			<% @total += @subtotal %>
+		</tr>
+		<tr>
+			<% end %>
+			<th>送料</th>
+			<td><%= @postage %></td>
+
+			<th>合計金額</th>
+			<td><%= @total %></td>
+
+			<th>請求金額</th>
+			<td><%= @total += @postage %></td>
+		</tr>
+</tbody>
+</table>
+<% end %>
+<%= form_for(@order, url: public_orders_path) do |a| %>
+<h3>支払い方法</h3>
+<%= @payment %>
+<%= a.hidden_field :payment %>
+
+<h3>お届け先</h3>
+<%= @order_delivery %>
+<%= a.hidden_field :Delivery_address %>
+<% @postage %>
+<%= a.hidden_field :postage, :value => "800" %>
+
+<%= a.submit "注文を確定する" %>
+<% end %>
+
+

@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     get '/home', to:'home#top'
   end
   namespace :public do
-    root :to => 'homes#top'
+    # root :to => 'homes#top'
+    post '/home', to:'homes#top'
   resources :end_users do
         get 'withdraw', on: :member
         get 'delivery', on: :member
@@ -30,25 +31,22 @@ Rails.application.routes.draw do
         delete 'end_user/destroy_p', to:'end_users#destory_p'
 
     resources :deliveries
-<<<<<<< HEAD
     resources :orders do
-      get 'detail', to: :member
+     get 'confirm', on: :collection
     end
-     get 'end_user/detail', to: 'end_users#detail'
+    post 'orders/confirm', to:'orders#confirm'
 
-    resources :cart_items
-
-=======
-    resources :orders
 
     resources :cart_items, only: [:index, :show, :create, :destroy, :update] do
       delete 'destroy_all', on: :member
+      post 'create_order', on: :member
     end
       delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
+      post 'create_order', to:'cart_items#create_order'
+      resources :oreder_items
 
-  
->>>>>>> 5f2a0144b18b0b404313dffc2f2c3dfdd37b7e71
   end
+
 
   namespace :public do
     resources :product_categories, only:[:index, :create, :new, :show] 
@@ -56,5 +54,6 @@ Rails.application.routes.draw do
 end
   devise_for :admins
   devise_for :end_users
+  resources :histories, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   end
