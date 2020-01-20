@@ -4,6 +4,7 @@ class Public::EndUsersController < ApplicationController
  	@end_user = EndUser.find(params[:id])
  	
 
+
  end
 
 
@@ -45,8 +46,11 @@ class Public::EndUsersController < ApplicationController
 
  def destory_p
  	@end_user = EndUser.find(params[:id])
- 	@end_user.destroy
+ 	if @end_user.destroy
  	redirect_to public_root_path
+ 	else
+ 		render :edit
+ 	end
  end
 
 

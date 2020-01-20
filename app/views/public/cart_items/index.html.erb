@@ -13,17 +13,18 @@
 	<tbody>
 
 		<% current_end_user.cart_items.each do |item| %>
+		<% tax = 1.1 %>
 		<tr>
 			<td><%= item.product.name %></td>
-			<td><%= item.product.price %></td>
+			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
 			<%= form_for(item, url: public_cart_item_path(item)) do |f| %>
 			<td><%= f.number_field :quentity %></td>
 			<td><%= f.submit "変更" %></td>
 			<% end %>
 
-			<td><%= item.product.price * item.quentity %></td>
+			<td><%= converting_to_jpy(item.product.price * item.quentity.floor) %>円</td>
 
-			<% @subtotal = item.product.price * item.quentity %>
+			<% @subtotal = item.product.price * item.quentity * tax %>
 			<% @total += @subtotal %>
 
 			<td><%= link_to "削除", public_cart_item_path(item), method: :delete %></td>
@@ -34,7 +35,7 @@
 <p>買い物を続ける</p>
 <table>
 	<tr><p>合計金額</p></tr>
-    <td><%= @total %></td>
+    <td><%= converting_to_jpy(@total.floor) %>円</td>
 </table>
 <%= link_to "情報入力画面に進む", new_public_order_path %>
 
