@@ -63,6 +63,7 @@ def create
 # 空箱作成
 if @order.save!
     current_end_user.cart_items.each do |items|
+
         @order_item = OrderItem.new
         @order_item.order_id = @order.id
         @order_item.order_item_name = items.product.name
@@ -70,6 +71,7 @@ if @order.save!
         @order_item.product_id = items.product_id
         @order_item.quantity = items.quentity
         @order_item.save!
+
 
     end
     current_end_user.cart_items.destroy_all

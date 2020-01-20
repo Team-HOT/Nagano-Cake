@@ -1,4 +1,4 @@
-
+<%= render 'public/homes/heder' %>
 <%= render 'public/products/sidemenu' %>
 <div class= "row">
 <div class="container2">
@@ -8,6 +8,9 @@
 <div class="item2">
 	<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %></div>
 	<span><%= products.name %></span><br>
+	<% tax = 1.1 %>
+					<% price = @product.price %>
+					<% total_price = tax * price %>
 	<span><%= products.price %></span><br>
 				<% end %>
 				<% end %>

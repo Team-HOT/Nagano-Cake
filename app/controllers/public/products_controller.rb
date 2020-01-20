@@ -2,6 +2,7 @@ class Public::ProductsController < ApplicationController
  def index
  	@product = Product.all
  end
+
  def category_show
  	@product = Product.find(params[:id])
  	@product_categories = ProductCategory.find(params[:id])
@@ -15,8 +16,6 @@ class Public::ProductsController < ApplicationController
  	@product_categories = ProductCategory.all
  	@cart_item = CartItem.new
  end
-
-
 
 
 

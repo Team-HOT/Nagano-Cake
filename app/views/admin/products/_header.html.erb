@@ -1,9 +1,12 @@
 <nav class="navbar navbar-default ">
-  <div class="container-fluid">
+  <div class="container-fluid top">
   <!-- ヘッダー部分 -->
     <div class="navbar-header">
       <%= link_to admin_home_path do %>
-      <div class="navbar-brand">ながのCAKE 管理用ページ</div>
+      <div class="navbar-brand">
+        <div>ながのCAKE 管理用ページ <%= image_tag 'jpg2.jpg',size:'25x25' %>
+        </div>
+      </div>
       <% end %>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav_target">
         <span class="icon-bar"></span>
@@ -31,3 +34,14 @@
 	</ul>
 </div>
 </nav>
+
+<style>
+  .top {
+    background-color: #FFE4E1;
+    border-style: hidden;
+  }
+  .btn-info {
+    background-color: #DEB887;
+    border-color: #DEB887;
+  }
+  </style>

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     root :to => 'homes#top'
     get 'about', to:'homes#about'
+
     get 'thanks', to:'homes#thanks'
     
     resources :end_users do
@@ -34,6 +35,7 @@ Rails.application.routes.draw do
       get 'delivery', on: :member
       delete 'destory_p', on: :member
       resources :orders
+
     end
     get 'end_user/withdraw', to:'end_users#withdraw'
     get 'end_user/delivery', to:'end_users#delivery'
@@ -55,11 +57,11 @@ Rails.application.routes.draw do
     delete 'cart_item_destroy_all', to:'cart_items#destroy_all'
     post 'create_order', to:'cart_items#create_order'
 
+
     resources :order_items
 
+
   end
-
-
   namespace :public do
     resources :product_categories, only:[:index, :create, :new, :show]
     resources :products
