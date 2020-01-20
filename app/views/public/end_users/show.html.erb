@@ -1,9 +1,11 @@
 
-<%= render 'public/homes/heder' %>
+<%= render 'public/homes/header' %>
 
 <div class= "box1">
 <div class= "row">
-マイページ
+<div class=b>
+  マイページ
+</div>
 
 <p>登録情報</p>
 
@@ -52,8 +54,14 @@
 		margin-top:100px;
 		font-size: 4rem;
 	}
+
+	.b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+	}
 </style>
-<%= link_to "注文履歴一覧", public_end_user_orders_path(end_user_id: current_end_user.id) %>
 
 
 

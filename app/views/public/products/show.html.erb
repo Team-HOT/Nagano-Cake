@@ -1,5 +1,5 @@
 
-<%= render 'public/homes/heder' %>
+<%= render 'public/homes/header' %>
 <%= render 'public/products/sidemenu' %>
 <div class="col-xs-5">
 <%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
@@ -42,16 +42,3 @@
 </style>
 
 
-
-<h1>商品詳細ページ</h1>
-<%= render 'public/homes/heder' %>
-<%= render 'public/products/sidemenu' %>
-
-<%= form_for(@cart_item, url: public_cart_items_path ) do |f| %>
-<%= attachment_image_tag @product, :product_image, :fill, 700, 700, fallback: "no_image.jpg",size:'700x700',format: 'no_image.jpg' %>
-<%= f.hidden_field :product_id, :value => @product.id %>
-<%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]] %>
-<%= f.submit "カートに入れる" %>
-
-
-<% end %>
