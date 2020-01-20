@@ -5,7 +5,7 @@
 <p>ショッピングカート</p>
 <%= link_to "カートを空にする", destroy_all_public_cart_item_path(current_end_user.cart_items), method: :delete %>
 <% @total = 0 %>
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th>商品名</th>
@@ -15,13 +15,13 @@
 		</tr>
 	</thead>
 	<tbody>
-
+　　　　　<tr>
 		<% current_end_user.cart_items.each do |item| %>
-		<tr>
+		
 			<td><%= item.product.name %></td>
 			<td><%= item.product.price %></td>
 			<%= form_for(item, url: public_cart_item_path(item)) do |f| %>
-			<td><%= f.number_field :quentity %></td>
+			<td><%= f.number_field :quentity,class: "col-xs-7 btn btn-default btn-lg" %></td>
 			<td><%= f.submit "変更" %></td>
 			<% end %>
 

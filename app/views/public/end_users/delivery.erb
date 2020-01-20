@@ -17,9 +17,11 @@
 		<th><%= f.label :宛名 %></th>
 			<td><%= f.text_field :delivery_name1 %></td>
 	</tr>
-
 </table>
-<%= f.submit '登録する' %>
+<div class= "box2">
+	 <%= f.submit '登録する',class: "col-xs-3 btn btn-success btn-lg" %>
+	
+</div>
 <% end %>
 
 <table>
@@ -50,4 +52,37 @@
 		margin-top:100px;
 		font-size: 4rem;
 	}
+
+    .box2 {
+    	display: flex;
+		justify-content: flex-end;
+
+    }
+
+    table {
+		margin-right: -30px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
