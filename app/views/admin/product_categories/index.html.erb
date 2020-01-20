@@ -13,7 +13,7 @@
 				<%= f.label(:product_category_status, "有効", value: "有効") %>
 				<%= f.radio_button(:product_category_status, "無効") %>
 				<%= f.label(:product_category_status, "無効", value: "無効") %>
-				<%= f.submit '追加' %>
+				<%= f.submit '追加', class:"btn btn-danger btn-sm" %>
 				</div>
 			<% end %>
 			<br>
@@ -42,3 +42,12 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.btn-danger {
+		background-color: #CD5C5C;
+		border-color: #CD5C5C;
+		color: #FFF;
+		font-size: 14px;
+	}
+</style>

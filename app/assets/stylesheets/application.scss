@@ -13,13 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
   @import "bootstrap-sprockets";
   @import "bootstrap";
-
-
-
-
 
 //背景のカラー//
 body {
@@ -37,7 +32,6 @@ background-color:#d3c1af;
 	display: flex;
 	align-items: center;
 }
-
 .page-title {
 	margin-top: 0;
 	font-size: 5rem;
@@ -58,7 +52,6 @@ background-color:#d3c1af;
 	padding: 0 0 10px;
 }
 
-
 .page-header ul {
 	padding-left: 0;
 	margin-top: 0;
@@ -71,13 +64,5 @@ background-color:#d3c1af;
 	margin-left: 0;
 }
 //ここまで//
-
-
-
-
-
-
-
-
 
 

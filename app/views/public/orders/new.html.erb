@@ -12,6 +12,7 @@
 <!-- 自分の住所を選択 -->
 <%= a.radio_button(:Delivery_address, @b) %>ご自身の住所<br>
 
+
 <table>
 	<tr>
 		<div class="box5">
@@ -29,6 +30,14 @@
 
 	</tr>
 </table>
+
+
+<div>
+<%= radio_button_tag(:Delivery_info, "2") %>登録済みの住所を選択
+
+
+
+<%= a.select :Delivery_address, @a %>
 
 
 <%= link_to "配送先を追加する", delivery_public_end_user_path(current_end_user) %>

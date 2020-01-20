@@ -5,25 +5,52 @@ class Public::OrdersController < ApplicationController
         @e = current_end_user
         @b = @e.post + @e.address + @e.name1 + @e.name2
 
-        # @a = []
-        # @delivery.each do |d|
-        #     a = d.id
-        #     b = d.delivery_post
-        #     c = d.delivery_address
-        #     e = d.delivery_name1
-        #     @a << [b + c + e, a]
+        @a = []
+        @delivery.each do |d|
+
+            b = d.delivery_post
+            c = d.delivery_address
+            e = d.delivery_name1
+            @a << [b + c + e]
+        end
 
 # p @a
 
 end
 def show
-    @order_items = OrderItem.find(params[:id])
+    @order = Order.find(params[:id])
+    @orders = @order.order_items
+
+end
+
+def detail
+    @order_item = OrderItem.find(params[:id])
+
+
 end
 
 def confirm
+    @delivery = current_end_user.deliveries
+    @e = current_end_user
+    @b = @e.post + @e.address + @e.name1 + @e.name2
+
+    @a = []
+    @delivery.each do |d|
+
+        b = d.delivery_post
+        c = d.delivery_address
+        e = d.delivery_name1
+        @a << [b + c + e]
+    end
+
+    if params[:Delivery_info] == "1"
+        @order_delivery = @b
+
+    else
+        @order_delivery = params[:order][:Delivery_address]
+    end
     @cart_items = current_end_user.cart_items
     @postage = 800
-    @order_delivery = params[:order][:Delivery_address]
     @payment = params[:order][:payment]
     @order = Order.new(order_params)
     @order_item = OrderItem.new
@@ -31,23 +58,35 @@ def confirm
 
 end
 def create
-    @order = Order.new(order_params) 
-    # 空箱作成
-    @order.save!
-    @order_item = OrderItem.new
-    @order_item.order_id = @order.id
+    @order = Order.new(order_params)
+    @order.end_user_id = current_end_user.id
+
+# 空箱作成
+if @order.save!
     current_end_user.cart_items.each do |items|
-      @order_item.order_item_name = items.product.name
+
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.order_item_name = items.product.name
+        @order_item.order_item_price = items.product.price
+        @order_item.product_id = items.product_id
+        @order_item.quantity = items.quentity
+        @order_item.save!
     end
+    current_end_user.cart_items.destroy_all
 
-    @order_item.save!
-    redirect_to public_orders_path
-
+    redirect_to public_thanks_path
+else
+    render :confirm
 end
-
+end
 
 def edit
     @order = Order.find(params[:id])
+end
+def index
+    @end_user = current_end_user
+    @orders = Order.all
 end
 
 

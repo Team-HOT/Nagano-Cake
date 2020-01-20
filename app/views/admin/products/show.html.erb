@@ -22,7 +22,7 @@
 					<h4>販売ステータス</h4>
 						<div class="text"><%= @product.sale_status %></div>
 					<br>
-					<%= link_to "編集する", edit_admin_product_path(@product.id), class:"btn btn-success btn-block" %>
+					<%= link_to "編集する", edit_admin_product_path(@product.id), class:"btn btn-danger btn-sm" %>
 				</div>
 			</div>
 	</div>
@@ -40,10 +40,11 @@
 		font-size: 16px;
 		line-height: 40px;
 	}
-	.btn-success {
-		background-color: #8FBC8F;
+	.btn-danger {
+		background-color: #CD5C5C;
+		border-color: #CD5C5C;
 		color: #FFF;
-		font-size: 13px;
+		font-size: 14px;
 	}
 </style>
 

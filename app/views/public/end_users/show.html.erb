@@ -1,9 +1,11 @@
 
-<%= render 'public/homes/heder' %>
+<%= render 'public/homes/header' %>
 
 <div class= "box1">
 <div class= "row">
-マイページ
+<div class=b>
+  マイページ
+</div>
 
 <p>登録情報</p>
 
@@ -38,9 +40,8 @@
 		<td><%= @end_user.email %></td>
 </table>
 
-配送先<%= link_to "一覧を見る", delivery_public_end_user_path(current_end_user) %>
+<%= link_to "配送先一覧", delivery_public_end_user_path(current_end_user) %>
 <br>
-
 注文履歴<%= link_to "一覧を見る", public_order_path(current_end_user) %>
 </div>
 </div>
@@ -53,6 +54,14 @@
 		margin-top:100px;
 		font-size: 4rem;
 	}
+
+	.b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+	}
 </style>
+
 
 
