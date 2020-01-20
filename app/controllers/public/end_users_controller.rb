@@ -2,11 +2,9 @@ class Public::EndUsersController < ApplicationController
 
  def show
  	@end_user = EndUser.find(params[:id])
- 	@product = ProductCategory.find(params[:id])
  	
-
+ 	@product = ProductCategory.find(params[:id])
  end
-
 
  def edit
  	@end_user = EndUser.find(params[:id])
@@ -46,8 +44,11 @@ class Public::EndUsersController < ApplicationController
 
  def destory_p
  	@end_user = EndUser.find(params[:id])
- 	@end_user.destroy
+ 	if @end_user.destroy
  	redirect_to public_root_path
+ 	else
+ 		render :edit
+ 	end
  end
 
 

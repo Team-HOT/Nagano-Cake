@@ -38,9 +38,8 @@
 		<td><%= @end_user.email %></td>
 </table>
 
-配送先<%= link_to "一覧を見る", delivery_public_end_user_path(current_end_user) %>
+<%= link_to "配送先一覧", delivery_public_end_user_path(current_end_user) %>
 <br>
-
 注文履歴<%= link_to "一覧を見る", public_order_path(current_end_user) %>
 </div>
 </div>
@@ -54,5 +53,7 @@
 		font-size: 4rem;
 	}
 </style>
+<%= link_to "注文履歴一覧", public_end_user_orders_path(end_user_id: current_end_user.id) %>
+
 
 

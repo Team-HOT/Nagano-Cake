@@ -3,7 +3,10 @@
   <!-- ヘッダー部分 -->
     <div class="navbar-header">
       <%= link_to admin_home_path do %>
-      <div class="navbar-brand">ながのCAKE 管理用ページ</div>
+      <div class="navbar-brand">
+        <div>ながのCAKE 管理用ページ <%= image_tag 'jpg2.jpg',size:'25x25' %>
+        </div>
+      </div>
       <% end %>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav_target">
         <span class="icon-bar"></span>
@@ -17,7 +20,7 @@
 	<ul class="nav navbar-nav navbar-right">
 		<li><%= link_to "商品一覧", admin_products_path %></li>
 		<li><%= link_to "会員一覧", admin_end_users_path %></li>
-		<li><%= link_to "注文履歴一覧", admin_order_items_path %></li>
+		<li><%= link_to "注文履歴一覧", admin_orders_path %></li>
 		<li><%= link_to "ジャンル管理", admin_product_categories_path %></li>
 		<li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
 　<!-- 検索フォーム -->
@@ -36,5 +39,9 @@
   .top {
     background-color: #FFE4E1;
     border-style: hidden;
+  }
+  .btn-info {
+    background-color: #DEB887;
+    border-color: #DEB887;
   }
   </style>
