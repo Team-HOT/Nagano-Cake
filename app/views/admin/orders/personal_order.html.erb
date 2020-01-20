@@ -1,0 +1,42 @@
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header' %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>注文履歴一覧</h3><br>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>注文日</th>
+							<th>配送先</th>
+							<th>注文商品</th>
+							<th>支払い金額</th>
+							<th>ステータス</th>
+						</tr>
+					</thead>
+					<tbody>
+					<% @end_user.orders.each do |o| %>
+						<% @a = 0 %>
+						<% tax = 1.1 %>
+						<tr>
+							<td><%= link_to o.created_at.strftime("%Y-%m-%d%H:%M"), admin_order_path(o.id) %></td>
+							<td>〒<%= o.Delivery_address %></td>
+							<td>
+								<% o.order_items.each do |it| %>
+								<p>・<%= it.order_item_name %></p>
+								<% total_price = it.order_item_price * tax %>
+								<% @subtotal = total_price * it.quantity %>
+								<% @a += @subtotal %>
+								<% end %>
+							</td>
+							<!-- 小数点切り捨て見直す！ -->
+							<td><%= converting_to_jpy(@a.floor) %>円</td>
+							<td>注文ステータス</td>
+						</tr>
+					<% end %>
+					</tbody>
+				</table>
+		</div>
+	</div>
+</div>

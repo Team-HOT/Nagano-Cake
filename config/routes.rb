@@ -13,8 +13,14 @@ Rails.application.routes.draw do
     resources :products
   end
   namespace :admin do
-    resources :orders, only:[:index, :show, :update]
+    resources :orders, only:[:index, :show, :update] do
+      get 'personal_order', on: :member
+    end
   end
+
+  get '/admin/personal_order/:id', to: 'orders#personal_order'
+
+
     namespace :admin do
     resources :order_items, only:[:index, :show, :update]
   end

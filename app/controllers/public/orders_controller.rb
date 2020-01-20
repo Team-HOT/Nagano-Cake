@@ -36,20 +36,17 @@ def create
     @order.end_user_id = current_end_user.id
     # 空箱作成
     @order.save!
+    current_end_user.cart_items.each do |items|
     @order_item = OrderItem.new
     @order_item.order_id = @order.id
-    current_end_user.cart_items.each do |items|
-      @order_item.order_item_name = items.product.name
-      @order_item.order_item_price = items.product.price
-      @order_item.product_id = items.product_id
-    　@order_item.quantity = items.quentity
-    end
-
+    @order_item.order_item_name = items.product.name
+    @order_item.order_item_price = items.product.price
+    @order_item.product_id = items.product_id
+    @order_item.quantity = items.quentity
     @order_item.save!
-    redirect_to public_orders_path
-
 end
-
+    redirect_to public_orders_path
+end
 
 def edit
     @order = Order.find(params[:id])

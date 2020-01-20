@@ -43,13 +43,6 @@ strong {
 }
 //ここまで//
 
-
-//商品画像の横並び//
-.container {
- display :flex;
- flex-direction: row-reverse;
-}
-
 .container2 {
  display :flex;
  flex-wrap:wrap;

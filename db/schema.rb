@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2020_01_18_102542) do
 
   create_table "admins", force: :cascade do |t|
@@ -115,6 +114,7 @@ ActiveRecord::Schema.define(version: 2020_01_18_102542) do
     t.string "sale_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ProductCategoryName"
   end
 
 end
