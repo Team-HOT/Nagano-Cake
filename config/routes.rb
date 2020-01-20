@@ -17,7 +17,6 @@ Rails.application.routes.draw do
       get 'personal_order', on: :member
     end
   end
-
   get '/admin/personal_order/:id', to: 'orders#personal_order'
 
 
