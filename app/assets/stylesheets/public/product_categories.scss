@@ -29,7 +29,7 @@
 
 strong {
 	font-size: 5rem;
-	color: #871900;
+	color: #6e5064;
 	margin-top: 20px;
 	margin-bottom: 0px;
 	padding: 10px;
@@ -45,15 +45,15 @@ strong {
 
 
 //商品画像の横並び//
-.container {
- display :flex;
- flex-direction: row-reverse;
-}
-
-.container2 {
+.products {
  display :flex;
  flex-wrap:wrap;
+ width: 1100px;
+
 }
+
+
+
 //ここまで//
 
 
@@ -66,7 +66,7 @@ strong {
 
 //hederのフォントカラー指定//
 .main-nav a {
-	color: #871900;
+	color: #6e5064;
 }
 //ここまで//
 

@@ -1,13 +1,15 @@
-<h1>注文情報確認ページ</h1>
+<div class= "box1">
+<div class= "row">
+<h1>注文情報確認ページ<h1>
 
-<h3>購入情報入力</h3>
-<h3>支払い方法</h3>
+<p>購入情報入力</p>
+<p>支払い方法</p>
 <%= form_for(@order, url: confirm_public_orders_path) do |a| %>
 <%= a.radio_button(:payment, "クレジットカード") %>クレジットカード
 
 <%= a.radio_button(:payment, "銀行振り込み") %>銀行振り込み
 
-<h3>お届け先</h3>
+<p>お届け先</p>
 <!-- 自分の住所を選択 -->
 <%= a.radio_button(:Delivery_address, @b) %>ご自身の住所<br>
 <table>
@@ -31,3 +33,15 @@
 <%= a.submit "確認画面へ進む" %>
 <% end %>
 <!--%= link_to "確認画面へ進む", confirm_public_orders_path %-->
+</div>
+</div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+</style>

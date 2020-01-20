@@ -1,3 +1,6 @@
+
+<div class= "box1">
+<div class= "row">
 <h1>注文確認情報</h1>
 <%= form_for(@order_item, url: public_orders_path) do |f| %>
 <% @total = 0 %>
@@ -48,5 +51,19 @@
 <%= a.hidden_field :postage, :value => "800" %>
 <%= a.submit "注文を確定する" %>
 <% end %>
+</div>
+</div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+</style>
+
+
 
 

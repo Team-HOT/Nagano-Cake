@@ -1,14 +1,11 @@
 
+<%= render 'public/homes/heder' %>
 
+<div class= "box1">
+<div class= "row">
+マイページ
 
-
-
-
-
-
-<h1>マイページ</h1>
-
-<h3>登録情報</h3>
+<p>登録情報</p>
 
 
 <%= link_to "編集する", edit_public_end_user_path %>
@@ -45,6 +42,17 @@
 <br>
 
 注文履歴<%= link_to "一覧を見る", public_order_path(current_end_user) %>
+</div>
+</div>
 
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+</style>
 
 

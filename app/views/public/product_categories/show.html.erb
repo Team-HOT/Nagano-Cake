@@ -1,20 +1,47 @@
-<%= render 'public/homes/heder' %>
-<%= render 'public/products/sidemenu' %>
-<div class= "row">
-<div class="container2">
-	<% @product_category.products.each do |products| %>
-	<%= link_to public_product_path(products.id) do  %>
 
-<div class="item2">
-	<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %></div>
-	<span><%= products.name %></span><br>
-	<% tax = 1.1 %>
-					<% price = @product.price %>
-					<% total_price = tax * price %>
-	<span><%= products.price %></span><br>
-				<% end %>
-				<% end %>
+<%= render 'public/homes/heder' %>
+<div class="container2, product_categories">
+<div class="row1">
+<%= render 'public/products/sidemenu' %>
+
+	<div class="products">
+	<% @product_category.products.each do |products| %>
+
+	<%= link_to public_product_path(products.id) do  %>
+	<div class="item">
+	<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
 </div>
+
+	<div class= "font1"><%= products.name %><br></div>
+	<% tax = 1.1 %>
+	<% price = @product.price %>
+	<% total_price = tax * price %>
+
+	<div class= "font1">¥<%= products.price %>（税込）</div>
+    
+				<% end %>
+				<% end %>
+
+
+</div>
+</div>
+</div>
+
+
+
+<style>
+   .row1{
+   	margin-left:40px;
+   }
+
+
+
+
+	.font1 {
+	color: #6e5064;
+	font-size:2rem ;
+	}
+</style>
 
 
 
