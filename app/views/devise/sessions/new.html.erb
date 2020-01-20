@@ -1,7 +1,7 @@
 
-<div class= "container3">
+<div class= "box1">
 <div class= "row">
-<h2>Log in</h2>end_user login
+<p>Log in</p>end_user login
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class="field">
@@ -27,15 +27,22 @@
 <% end %>
 <%= render "devise/shared/links" %>
 </div>
-
 </div>
 
 
+
 <style>
-.container3 {
-display: flex;
-justify-content:center;
-margin-top: 0px;
-padding:10px;
-}
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
 </style>
+
+
+
+
+
+
+

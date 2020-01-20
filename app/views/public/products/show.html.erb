@@ -1,4 +1,48 @@
 
+<%= render 'public/homes/heder' %>
+<%= render 'public/products/sidemenu' %>
+<div class="col-xs-5">
+<%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
+</div>
+<div class="col-xs-4">
+	<h2><%= @product.name %></h2>
+	<%= form_for(@cart_item, url: public_cart_items_path ) do |f| %>
+		<% tax = 1.1 %>
+		<%= @product.product_body %>
+		<% price = @product.price %>
+		<% total_price = tax * price %>
+		<p>¥<%= converting_to_jpy(total_price.floor) %>（税込）円</p>
+		<%= f.hidden_field :product_id, :value => @product.id %>
+		<%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]] %>
+		<%= f.submit "カートに入れる" %>
+	<% end %>
+</div>
+
+
+
+
+
+
+<style>
+
+
+.col-xs-4{
+	font-size: 2rem;
+	padding-left:  0px;
+	
+	float:right;
+}
+.item{
+
+	margin-bottom: 200px;
+	margin-right: 0px;
+	padding: 0px;
+
+}
+</style>
+
+
+
 <h1>商品詳細ページ</h1>
 <%= render 'public/homes/heder' %>
 <%= render 'public/products/sidemenu' %>
@@ -8,5 +52,6 @@
 <%= f.hidden_field :product_id, :value => @product.id %>
 <%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]] %>
 <%= f.submit "カートに入れる" %>
+
 
 <% end %>

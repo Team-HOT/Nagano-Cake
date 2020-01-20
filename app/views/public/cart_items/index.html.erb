@@ -1,4 +1,8 @@
-<h1>ショッピングカート</h1>
+
+<div class= "box1">
+<div class= "row">
+
+<p>ショッピングカート</p>
 <%= link_to "カートを空にする", destroy_all_public_cart_item_path(current_end_user.cart_items), method: :delete %>
 <% @total = 0 %>
 <table>
@@ -38,6 +42,20 @@
     <td><%= converting_to_jpy(@total.floor) %>円</td>
 </table>
 <%= link_to "情報入力画面に進む", new_public_order_path %>
+</div>
+</div>
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+</style>
+
+
+
 
 
 
