@@ -8,14 +8,10 @@
 これまでの購入履歴が閲覧できなくなります。<br>
 退会する場合は、「退会する」をクリックしてください。
 <br>
-<div>
-<%= link_to "退会しない", edit_public_end_user_path(current_end_user.id),class: "col-xs-3 btn btn-info btn-lg" %>
-</div>
-<div>
-<%= link_to "退会する", destory_p_public_end_user_path(current_end_user), method: :delete,class: "col-xs-3 btn btn-danger
- btn-lg"  %>
- </div>
 
+<%= link_to "退会しない", edit_public_end_user_path(current_end_user.id) %>
+
+<%= link_to "退会する", destory_p_public_end_user_path(current_end_user), method: :delete %>
 </div>
 </div>
 
