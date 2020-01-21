@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+
+//背景のカラー//
+body {
+background-color:#d3c1af;
+}
+//ここまで//
+
+//背景画像の指定と画面の大きさの指定//
+#home {
+	background-image: url(スイーツ.jpg);
+	min-height: 100vh;
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+}
+.page-title {
+	margin-top: 0;
+	font-size: 5rem;
+	font-family: 'Philosopher', serif;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+//ここまで//
+//ヘッダーの記述//
+.container2 {
+	width: 1280px;
+}
+
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 0 10px;
+}
+
+.page-header ul {
+	padding-left: 0;
+	margin-top: 0;
+	text-transform: none;
+}
+.page-header ul li {
+	margin-left: 20px;
+}
+.page-header ul li:first-child {
+	margin-left: 0;
+}
+//ここまで//
+
+

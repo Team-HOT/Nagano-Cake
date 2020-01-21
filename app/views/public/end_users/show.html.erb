@@ -1,0 +1,67 @@
+
+<%= render 'public/homes/header' %>
+
+<div class= "box1">
+<div class= "row">
+<div class=b>
+  マイページ
+</div>
+
+<p>登録情報</p>
+
+
+<%= link_to "編集する", edit_public_end_user_path %>
+
+<%= link_to "パスワードを変更する", edit_end_user_registration_path %>
+<br>
+
+<table>
+	<th>氏名</th>
+		<td><%= @end_user.name1 %> <%= @end_user.name2 %></td>
+</table>
+<table>
+	<th>カナ</th>
+		<td><%= @end_user.name3 %> <%= @end_user.name4 %></td>
+</table>
+<table>
+	<th>郵便番号</th>
+		<td>〒<%= @end_user.post %></td>
+</table>
+<table>
+	<th>住所</th>
+		<td><%= @end_user.address %></td>
+</table>
+<table>
+	<th>電話番号</th>
+		<td><%= @end_user.number %></td>
+</table>
+<table>
+	<th>email</th>
+		<td><%= @end_user.email %></td>
+</table>
+
+<%= link_to "配送先一覧", delivery_public_end_user_path(current_end_user) %>
+<br>
+注文履歴<%= link_to "一覧を見る", public_orders_path(current_end_user) %>
+</div>
+</div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+
+	.b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+	}
+</style>
+
+
+

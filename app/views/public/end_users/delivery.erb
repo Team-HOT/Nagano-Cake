@@ -1,0 +1,77 @@
+<%= render 'public/homes/header' %>
+<div class= "box1">
+<div class= "row">
+<div class=b>
+配送先登録/一覧
+</div>
+
+<%= form_for(@delivery, url: public_deliveries_path(current_end_user.id)) do |f| %>
+<table>
+	<tr>
+		<th><%= f.label :郵便番号 %></th>
+			<td><%= f.text_field :delivery_post %></td>
+	</tr>
+	<tr>
+		<th><%= f.label :住所 %></th>
+			<td><%= f.text_field :delivery_address %></td>
+	</tr>
+	<tr>
+		<th><%= f.label :宛名 %></th>
+			<td><%= f.text_field :delivery_name1 %></td>
+	</tr>
+</table>
+<div class= "box2">
+	 <%= f.submit '登録する',class: "col-xs-3 btn btn-success btn-lg" %>
+	
+</div>
+<% end %>
+
+<table>
+
+<tr>
+</tr>
+<tr>
+	<% @deliveries.each do |d| %>
+	<td><%= d.delivery_post %></td>
+	<td><%= d.delivery_address %></td>
+	<td><%= d.delivery_name1 %></td>
+	<td><%= link_to "編集する", edit_public_delivery_path(d.id) %></td>
+	<td><%= link_to "削除する", public_end_user_path(d.id), method: :delete %></td>
+</tr>
+	<% end %>
+</table>
+</div>
+ </div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+
+    .box2 {
+    	display: flex;
+		justify-content: flex-end;
+
+    }
+
+    table {
+		margin-right: -30px;
+	}
+
+    .b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+        margin-right: -30px;
+    }
+    .col-xs-3 {
+    	margin-right: -30px;
+    }
+
+
+</style>

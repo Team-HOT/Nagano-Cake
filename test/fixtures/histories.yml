@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  end_user_id: 1
+  name1: MyString
+  name2: MyString
+  neme3: MyString
+  name4: MyString
+  order_delivery_name: MyString
+  order_delivery_address: MyText
+  order_delivery_post: 1
+  order_item: MyString
+  order_price: 1
+  order_quantity: 1
+  order_postage: 1
+  order_total_price: 
+  order_payment: MyString
+
+two:
+  end_user_id: 1
+  name1: MyString
+  name2: MyString
+  neme3: MyString
+  name4: MyString
+  order_delivery_name: MyString
+  order_delivery_address: MyText
+  order_delivery_post: 1
+  order_item: MyString
+  order_price: 1
+  order_quantity: 1
+  order_postage: 1
+  order_total_price: 
+  order_payment: MyString

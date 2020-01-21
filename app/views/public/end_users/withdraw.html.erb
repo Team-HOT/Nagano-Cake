@@ -1,0 +1,33 @@
+<div class= "box1">
+<div class= "row">
+
+
+ <p>本当に退会しますか?</p>
+
+退会すると、会員登録情報や<br>
+これまでの購入履歴が閲覧できなくなります。<br>
+退会する場合は、「退会する」をクリックしてください。
+<br>
+<div>
+<%= link_to "退会しない", edit_public_end_user_path(current_end_user.id),class: "col-xs-3 btn btn-info btn-lg" %>
+</div>
+<div>
+<%= link_to "退会する", destory_p_public_end_user_path(current_end_user), method: :delete,class: "col-xs-3 btn btn-danger
+ btn-lg"  %>
+ </div>
+
+</div>
+</div>
+
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+</style>
+
+

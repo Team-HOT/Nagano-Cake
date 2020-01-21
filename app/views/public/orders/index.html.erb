@@ -1,0 +1,66 @@
+<div class= "box1">
+<div class= "row">
+ <div class=b>
+注文履歴一覧
+ </div>
+<table class="table">
+	<thead>
+		<tr>
+			<th>注文日</th>
+			<th>配送先</th>
+			<th>注文商品</th>
+			<th>支払い金額</th>
+			<th>ステータス</th>
+			<th>注文詳細</th>
+		</tr>
+	</thead>
+	<tbody>
+	<% current_end_user.orders.each do |o| %>
+		<% @a = 0 %>
+		<tr>
+			<td><%= o.created_at %></td>
+			<td>〒<%= o.Delivery_address %></td>
+			<td>
+				<% o.order_items.each do |it| %>
+					<p><%= it.order_item_name %></p>
+					<% @subtotal = it.order_item_price * it.quantity %>
+					<% @a += @subtotal %>
+				<% end %>
+			</td>
+			<td><%= converting_to_jpy(@a.floor) %>円</td>
+			<td><%= link_to "表示する", public_end_user_order_path(end_user_id: current_end_user.id, id: o.id) %>
+		</tr>
+	<% end %>
+	</tbody>
+</table>
+ </div>
+   </div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:200px;
+		font-size: 2.8rem;
+	}
+
+
+
+    .b {
+    	font-size: 4rem;
+    	margin: 10px;
+		background-color: #e91e6321;
+		text-align: center;
+        border-radius: 20px; 
+        margin-right: 500px;
+        margin-left: 500px;
+    }
+
+
+</style>
+
+
+
+
+

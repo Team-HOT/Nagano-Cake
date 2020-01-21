@@ -1,0 +1,7 @@
+<% current_end_user.cart_items.each do |item| %>
+<td><%= item.product.name %></td>
+<td><%= item.product.price %></td>
+<%= form_for(current_end_user.cart_items, url: public_cart_item_path(item.product) do |f| %>
+<%= f.text.field :quentity %>
+<%= f.submit "変更" %>
+<% end %>
