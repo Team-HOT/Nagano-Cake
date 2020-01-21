@@ -30,13 +30,13 @@
 							<% order.order_items.each do |i| %>
 							<% @a += i.quantity %>
 							<% end %>
-							<td><%= @a %></td>
-							<td>注文ステータス</td>
-						</tr>
-						<% end %>
-					</tbody>
-				</table>
-			</div>
+
+						<td><%= @a %></td>
+						<td><%= order.order_status %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
-	<%= @order.count %>
+</div>

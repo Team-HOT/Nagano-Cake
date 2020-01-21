@@ -30,9 +30,8 @@
 								<% @a += @subtotal %>
 								<% end %>
 							</td>
-							<!-- 小数点切り捨て見直す！ -->
-							<td><%= converting_to_jpy(@a.floor) %>円</td>
-							<td>注文ステータス</td>
+							<td><%= converting_to_jpy(@a.floor + @postage) %>円</td>
+							<td><%= o.order_status %></td>
 						</tr>
 					<% end %>
 					</tbody>

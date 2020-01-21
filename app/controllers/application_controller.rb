@@ -17,7 +17,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
    when Admin
         admin_home_path
    else
-        public_end_user_path(resource)
+        public_product_categories_path
     end
  end
 
