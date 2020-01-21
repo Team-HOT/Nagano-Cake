@@ -15,22 +15,22 @@
 		<% current_end_user.cart_items.each do |item| %>
 		<tr>
 			<td><%= item.product.name %></td>
-			<td><%= item.product.price %></td>
-			<td><%= item.quentity %></td>
-			<td><%= item.product.price * item.quentity %></td>
+			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
+			<td><%= item.quentity %>個</td>
+			<td><%= converting_to_jpy(item.product.price * item.quentity) %>円</td>
 			<% @subtotal = item.product.price * item.quentity %>
 			<% @total += @subtotal %>
 		</tr>
 		<tr>
 			<% end %>
 			<th>送料</th>
-			<td><%= @postage %></td>
+			<td><%= @postage %>円</td>
 
 			<th>合計金額</th>
-			<td><%= @total %></td>
+			<td><%= converting_to_jpy(@total.floor) %>円</td>
 
 			<th>請求金額</th>
-			<td><%= @total += @postage %></td>
+			<td><%= converting_to_jpy(@total += @postage.floor) %>円</td>
 		</tr>
 </tbody>
 </table>
@@ -43,9 +43,10 @@
 
 <h3>お届け先</h3>
 <%= @order_delivery %>
-<%= a.hidden_field :Delivery_address %>
+<%= a.hidden_field :Delivery_address, :value => @order_delivery %>
 <% @postage %>
 <%= a.hidden_field :postage, :value => "800" %>
+<%= a.hidden_field :order_status, :value => "入金待ち" %>
 <%= a.submit "注文を確定する" %>
 <% end %>
 

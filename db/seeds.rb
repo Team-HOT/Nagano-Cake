@@ -7,3 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(email: 'admin1@example.com', password: 'password')
+
+order_items = OrderItem.create([{production_status: "着手不可"}, {production_status: "製作待ち"}, {production_status: "製作中"}, {production_status: "製作完了"}])
+orders = Order.create([{order_status: "入金待ち"}, {order_status: "入金確認"}, {order_status: "製作中"}, {order_status: "発送準備中"}, {order_status: "発送済み"}])

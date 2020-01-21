@@ -44,7 +44,7 @@
 <%= link_to "配送先一覧", delivery_public_end_user_path(current_end_user) %>
 <br>
 
-<%= link_to "注文履歴一覧", public_order_path(current_end_user) %>
+<%= link_to "注文履歴一覧", public_end_user_orders_path(end_user_id: current_end_user.id) %>
 
 
 

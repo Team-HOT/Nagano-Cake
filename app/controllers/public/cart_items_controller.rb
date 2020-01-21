@@ -7,22 +7,28 @@ class Public::CartItemsController < ApplicationController
 
 	def create
 		@cart_item = current_end_user.cart_items.new(cart_item_params)
-		@cart_item.save
+		if @cart_item.save
 		redirect_to public_cart_items_path(@product)
+	    else render :index
 	end
 
 
 	def update
 		@product = CartItem.find(params[:id])
-		@product.update(cart_item_params)
+		if @product.update(cart_item_params)
 		redirect_to public_cart_items_path(@product)
+	    else render :index
+	    end
+
 	end
 
 	def destroy
 		@product = CartItem.find(params[:id])
 
-		@product.destroy
+		if @product.destroy
 		redirect_to public_cart_items_path
+	    else render :index
+	    end
 	end
 
 	def destroy_all
@@ -30,6 +36,8 @@ class Public::CartItemsController < ApplicationController
 		@product = @end_user.cart_items
 		@product.destroy_all
 		redirect_to public_cart_items_path
+	    else render :index
+	    end
 	end
 
 	private
