@@ -1,24 +1,22 @@
-
 <!-- ヘッダー部分 -->
 <%= render 'admin/products/header' %>
 
 <h3>注文詳細画面</h3>
 
-	<label>購入者</label>
-	<div><%= @order.end_user.name1 %><%= @order.end_user.name2 %></div>
+<label>購入者</label>
+<div><%= @order.end_user.name1 %><%= @order.end_user.name2 %></div>
 
-	<label>配送先</label>
-	<div>〒<%= @order.Delivery_address %></div>
+<label>配送先</label>
+<div>〒<%= @order.Delivery_address %></div>
 
-	<label>支払方法</label>
-	<div><%= @order.payment %></div>
+<label>支払方法</label>
+<div><%= @order.payment %></div>
 
-<!-- 注文ステータスボタン -->
-<%= form_for(@new_order, url: admin_order_path, method: :patch) do |f| %>
-	<div>注文ステータス</div>
-		<%= f.select :order_status, {入金待ち: '入金待ち', 入金確認: '入金確認', 製作中: '製作中', 発送準備中: '発送準備中', 発送済み: '発送済み'}, :selected=>@order.order_status %>
-		<%= f.submit "更新" %>
-<% end %>
+<br>
+<!-- セレクトボタンで表示 -->
+<div>注文ステータス</div>
+<br>
+
 <table>
 	<thead>
 		<tr>
@@ -30,7 +28,6 @@
 		</tr>
 	</thead>
 	<tbody>
-    <%= form_for(@new_order_item, url: admin_order_item_path, method: :patch) do |p| %>
 		<% @order.order_items.each do |f| %>
 			<% @a = 0 %>
 			<% tax = 1.1 %>
@@ -44,16 +41,15 @@
 				<% @sub_total = total_price * f.quantity %>
 				<% @a += @sub_total %>
 				<td><%= converting_to_jpy(@a.floor) %></td>
-				<!-- 製作ステータスボタン -->
-				<td><div id="form1"><%= p.select :production_status, {着手不可: '着手不可', 製作待ち: '製作待ち', 製作中: '製作中', 製作完了: '製作完了'}, :selected=>f.production_status %></div>
-				</td>
+				<!-- 製作ステータスが入る -->
+				<td></td>
 			</tr>
 		<% end %>
 	</tbody>
 </table>
-<% end %>
 <br>
-<% @order.order_items.each do |n| %>
+
+<% @order_items.each do |n| %>
 <% @b = 0 %>
 <% tax = 1.1 %>
 <% total_price = n.order_item_price * tax %>
@@ -63,7 +59,7 @@
 <table>
 	<tr>
 		<th>商品合計</th>
-		<td><%= converting_to_jpy(@b.floor) %>円</td>
+		<td><%= @b.floor %>円</td>
 	</tr>
 	<tr>
 		<th>送料</th>
@@ -74,3 +70,4 @@
 		<td><%= converting_to_jpy(@b.floor + @postage) %>円</td>
 	</tr>
 </table>
+

@@ -1,7 +1,9 @@
-
+<%= render 'public/homes/header' %>
 <div class= "box1">
 <div class= "row">
+<div class=b>
 配送先登録/一覧
+</div>
 
 <%= form_for(@delivery, url: public_deliveries_path(current_end_user.id)) do |f| %>
 <table>
@@ -27,9 +29,6 @@
 <table>
 
 <tr>
-	<th>郵便番号</th>
-	<th>住所</th>
-	<th>宛名</th>
 </tr>
 <tr>
 	<% @deliveries.each do |d| %>
@@ -63,26 +62,16 @@
 		margin-right: -30px;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+        margin-right: -30px;
+    }
+    .col-xs-3 {
+    	margin-right: -30px;
+    }
 
 
 </style>
