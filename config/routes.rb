@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :products
   end
   namespace :admin do
-    resources :orders, only:[:index, :show, :update] do
+    resources :orders, only:[:index, :show, :update, :create] do
       get 'personal_order', on: :member
     end
   end

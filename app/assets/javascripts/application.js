@@ -14,5 +14,19 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+
+  //セレクトボックスが切り替わったら発動
+  $('#form1').change(function() {
+
+    //選択したvalue値を変数に格納
+    var val = $(this).val();
+
+    //選択したvalue値をp要素に出力
+    $('form').submit();
+  });
+});
