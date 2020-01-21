@@ -49,6 +49,7 @@
 <%= a.hidden_field :Delivery_address, :value => @order_delivery %>
 <% @postage %>
 <%= a.hidden_field :postage, :value => "800" %>
+<%= a.hidden_field :order_status, :value => "入金待ち" %>
 <%= a.submit "注文を確定する" %>
 <% end %>
 </div>

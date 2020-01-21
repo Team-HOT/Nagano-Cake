@@ -1,18 +1,33 @@
 class Admin::OrdersController < ApplicationController
   def index
-  	@order = Order.all
-  	@orders = Order.created_today
+  	 @order = Order.all
+  	 @orders = Order.created_today
   end
 
 def show
+	@new_order_item = OrderItem.new
+	@new_order = Order.new
 	@order = Order.find(params[:id])
-	@order_items = OrderItem.all
+	@order_item = @order.order_items
 	@postage = 800
+end
+
+def update
+	@order = Order.find(params[:id])
+	@order_item = @order.order_items
+	@order.update(order_status: params[:order][:order_status])
+	if @order.order_status == "入金確認"
+		@order_item.each do |order_item|
+		order_item.update(production_status: "製作待ち")
+		end
+	end
+	redirect_to admin_order_path(@order)
 end
 
 def personal_order
 	@orders = Order.all
 	@end_user = EndUser.find(params[:id])
+	@postage = 800
 end
 
  private
