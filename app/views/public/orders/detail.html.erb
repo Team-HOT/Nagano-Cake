@@ -1,0 +1,23 @@
+<h1>注文履歴詳細</h1>
+
+<h3>注文情報</h3>
+<table>
+	<% current_end_user.orders.each do |o| %>
+	<tr>
+		<th>注文日</th>
+			<td><%= o.order_items.created_at %></td>
+	</tr>
+	<tr>
+		<th>配送先</th>
+		<td>〒<%= o.Delivery_address %></td>
+	</tr>
+	<tr>
+		<th>支払い方法</th>
+		<td><%= o.payment %></td>
+	</tr>
+	<tr>
+		<th>ステータス</th>
+		<td></td>
+	</tr>
+	<% end %>
+</table>

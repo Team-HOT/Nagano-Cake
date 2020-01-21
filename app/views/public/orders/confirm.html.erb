@@ -1,0 +1,81 @@
+<%= render 'public/homes/header' %>
+<div class= "box1">
+<div class= "row">
+<div class=b>
+注文確認情報
+</div>
+<%= form_for(@order_item, url: public_orders_path) do |f| %>
+<% @total = 0 %>
+
+<table class="table">
+<thead>
+	<tr>
+		<th>商品名</th>
+		<th>単価(税込)</th>
+		<th>数量</th>
+		<th>小計</th>
+	</tr>
+</thead>
+<tbody>
+		<% current_end_user.cart_items.each do |item| %>
+		<tr>
+			<td><%= item.product.name %></td>
+			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
+			<td><%= item.quentity %>個</td>
+			<td><%= converting_to_jpy(item.product.price * item.quentity) %>円</td>
+			<% @subtotal = item.product.price * item.quentity %>
+			<% @total += @subtotal %>
+		</tr>
+		<tr>
+			<% end %>
+			<th>送料</th>
+			<td><%= @postage %>円</td>
+
+			<th>合計金額</th>
+			<td><%= converting_to_jpy(@total.floor) %>円</td>
+
+			<th>請求金額</th>
+			<td><%= converting_to_jpy(@total += @postage.floor) %>円</td>
+		</tr>
+</tbody>
+</table>
+<% end %>
+
+<%= form_for(@order, url: public_orders_path) do |a| %>
+<div>
+支払い方法
+</div>
+<%= @payment %>
+<%= a.hidden_field :payment %>
+<div>
+お届け先
+</div>
+<%= @order_delivery %>
+<%= a.hidden_field :Delivery_address, :value => @order_delivery %>
+<% @postage %>
+<%= a.hidden_field :postage, :value => "800" %>
+<%= a.submit "注文を確定する", class: "col-xs-3 btn btn-success btn-lg" %>
+<% end %>
+</div>
+</div>
+
+
+<style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:100px;
+		font-size: 4rem;
+	}
+	.b {
+		font-size: 4rem;
+		background-color: #e91e6321;
+		text-align: center;
+        border-radius: 20px; 
+        margin-right: 400px;
+    }
+</style>
+
+
+
+

@@ -1,0 +1,50 @@
+<!-- ヘッダー部分 -->
+<%= render 'admin/products/header', products: @products %>
+
+<div class="container">
+	<div class="row">
+		<h3>商品詳細画面</h3><br>
+			<div class="col-xs-4">
+				<%= attachment_image_tag @product, :product_image, :fill, 300, 230, format:'jpeg', class:"picture" %>
+			</div>
+			<div class="col-md-8">
+					<h4>商品名</h4>
+						<div class="text"><%= @product.name %></div>
+					<h4>商品説明</h4>
+						<div class="text"><%= @product.product_body %></div>
+					<h4>ジャンル</h4>
+						<div class="text"><%= @product.product_category.product_category_name %></div>
+					<h4>税込価格（税抜価格）</h4>
+						<% tax = 1.1 %>
+						<% price = @product.price %>
+						<% total_price = tax * price %>
+						<div class="text"><%= converting_to_jpy(total_price.floor) %>(<%= converting_to_jpy(@product.price) %>)円</div>
+					<h4>販売ステータス</h4>
+						<div class="text"><%= @product.sale_status %></div>
+					<br>
+					<%= link_to "編集する", edit_admin_product_path(@product.id), class:"btn btn-danger btn-sm" %>
+				</div>
+			</div>
+	</div>
+</div>
+
+
+<style>
+	.picture {
+		object-position: center;
+	}
+	h4 {
+		font-weight: bold;
+	}
+	.text {
+		font-size: 16px;
+		line-height: 40px;
+	}
+	.btn-danger {
+		background-color: #CD5C5C;
+		border-color: #CD5C5C;
+		color: #FFF;
+		font-size: 14px;
+	}
+</style>
+
