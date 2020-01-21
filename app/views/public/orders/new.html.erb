@@ -4,7 +4,7 @@
 <p>購入情報入力</p>
 <font3>支払い方法</font3>
 <%= form_for(@order, url: confirm_public_orders_path) do |a| %>
-<%= a.radio_button(:payment, "クレジットカード") %>クレジットカード
+<%= a.radio_button(:payment, "クレジットカード", checked: true) %>クレジットカード
 
 <%= a.radio_button(:payment, "銀行振り込み") %>銀行振り込み
 
@@ -12,6 +12,11 @@
 <!-- 自分の住所を選択 -->
 <%= a.radio_button(:Delivery_address, @b) %>ご自身の住所<br>
 
+
+
+<h3>お届け先</h3>
+<!-- 自分の住所を選択 -->
+<%= radio_button_tag(:Delivery_info, "1", checked: true) %>ご自身の住所<br>
 
 <table>
 	<tr>
@@ -35,9 +40,33 @@
 <div>
 <%= radio_button_tag(:Delivery_info, "2") %>登録済みの住所を選択
 
-
-
 <%= a.select :Delivery_address, @a %>
+
+
+
+
+<%= radio_button_tag(:Delivery_info, "3") %>新しい配達先を登録
+
+<table>
+	    <tr>
+			<th><%= a.label :郵便番号 %></th>
+		    <td><%= a.text_field :Delivery_post %></td>
+	    </tr>
+		<tr>
+			<th><%= a.label :住所 %></th>
+			<td><%= a.text_field :Delivery_address %></td>
+		</tr>
+		<tr>
+			<th><%= a.label :宛名 %></th>
+			<td><%= a.text_field :delivery_name %></td>
+		</tr>
+
+
+</table>
+
+
+
+
 
 
 <%= link_to "配送先を追加する", delivery_public_end_user_path(current_end_user) %>

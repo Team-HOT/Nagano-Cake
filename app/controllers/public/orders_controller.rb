@@ -30,6 +30,7 @@ def detail
 end
 
 def confirm
+    @t = Delivery.new
     @delivery = current_end_user.deliveries
     @e = current_end_user
     @b = @e.post + @e.address + @e.name1 + @e.name2
@@ -46,8 +47,20 @@ def confirm
     if params[:Delivery_info] == "1"
         @order_delivery = @b
 
-    else
+    elsif params[:Delivery_info] == "2"
         @order_delivery = params[:order][:Delivery_address]
+
+    elsif params[:Delivery_info] == "3"
+        @dp = params[:order][:Delivery_post]
+        @da = params[:order][:Delivery_address]
+        @dn = params[:order][:delivery_name]
+
+        @order_delivery = @dp.to_s + @da + @dn
+
+
+
+
+
     end
     @cart_items = current_end_user.cart_items
     @postage = 800
