@@ -3,10 +3,10 @@
 <%= render 'public/homes/header' %>
 <%= render 'public/products/sidemenu' %>
 <div class="col-xs-5">
-<%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
+<%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'400x400',format: 'no_image.jpg' %>
 </div>
 <div class="col-xs-4">
-	<div class= "box1">
+	<div class= "box1 public product show">
 	<h2><strong><%= @product.name %></strong></h2>
 	<%= form_for(@cart_item, url: public_cart_items_path ) do |f| %>
 		<% tax = 1.1 %>
@@ -31,53 +31,30 @@
 
 
 .col-xs-4{
-	font-size: 2rem;
-	padding-left:  0px;
+	font-size: 40px;
+	padding-left:  -40px;
+	padding-right: 30px;
+	
 	float:right;
 }
-.col-xs-5 {
-	padding-left:80px;
-}
-
 .item{
 
 	margin-bottom: 200px;
 	margin-right: 0px;
 	padding: 0px;
+
 }
 .box1{
-	margin-right: 200px;
-	margin-left: -100px;
+	margin-right: 100px;
+	margin-left: -90px;
 	font-size:3rem;
 }
 
 .box2 {
     margin: 80px;
     margin-left: 70px;
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </style>
 
 
