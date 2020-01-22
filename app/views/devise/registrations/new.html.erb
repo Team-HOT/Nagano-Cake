@@ -1,7 +1,7 @@
-
+<%= render 'public/homes/header' %>
 <div class= "box1">
 <div class= "row">
-  <h1>sign up</h1>
+  <strong>sign up</strong>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -51,7 +51,7 @@
 </div>
 
 <div class="actions">
-  <%= f.submit "Sign up" %>
+  <%= f.submit "Sign up",class: "col-xs-3 btn btn-success btn-lg" %>
 </div>
 <% end %>
 
@@ -65,6 +65,8 @@
 
 <style>
   .box1 {
+    margin: 200px;
+    padding:30px;
     display: flex;
     justify-content: center;
     margin-top:40px;

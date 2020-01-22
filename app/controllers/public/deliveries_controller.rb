@@ -32,7 +32,7 @@ class Public::DeliveriesController < ApplicationController
  	@delivery = Delivery.new(delivery_params)
  	@delivery.end_user = current_end_user
  	if @delivery.save
- 		redirect_to public_end_user_path(current_end_user.id)
+ 		redirect_to delivery_public_end_user_path(current_end_user.id)
  	else
  		@deliveries = Delivery.all
  		render :index
@@ -43,7 +43,7 @@ class Public::DeliveriesController < ApplicationController
  	if @deliveries = Delivery.find(params[:id])
  		@end_user = @deliveries.end_user
  		@end_user.destroy
- 		redirect_to public_end_user_path(current_end_user.id)
+ 		redirect_to delivery_public_end_user_path(current_end_user.id)
  	else
  		render :delivery
  	end
