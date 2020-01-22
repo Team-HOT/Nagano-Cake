@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :end_users, only:[:index, :show, :edit, :update]
   end
   namespace :admin do
-    resources :product_categories, only:[:index, :new, :create, :edit, :update]
+    resources :product_categories, only:[:index, :new, :create, :edit, :update, :destroy]
   end
   namespace :admin do
     resources :products
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     get 'about', to:'homes#about'
 
     get 'thanks', to:'homes#thanks'
-    
+
     resources :end_users do
       get 'withdraw', on: :member
       get 'delivery', on: :member

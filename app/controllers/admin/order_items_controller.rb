@@ -1,14 +1,25 @@
 class Admin::OrderItemsController < ApplicationController
 
 def update
+	i = 0
 	@order = Order.find(params[:id])
-	@order_item = @order.order_items
+	# admin/orders/show.html.erbのehidden_fieldのパラメーター取得
+	# params[:モデル名][:渡したname属性]で受け取る
+	@order_item = OrderItem.find(params[:order_item][:order_item_id])
+	# 上記で取得したレコードのproduction_statusを新しいものに入れ替える
 	@order_item.update(production_status: params[:order_item][:production_status])
-	@order.order_items.each do |order_item|
-		if order_item.production_status == "製作中"
-			@order.update(order_status: "製作中")
-		elsif order_item.production_status == "製作完了"
-			  @order.update(order_status: "発送準備中")
+	if @order_item.production_status == "製作中"
+	# production_statusが1つでも"製作中"になれば、order_statusも"製作中"に更新
+		@order.update(order_status: "製作中")
+	elsif @order_item.production_status == "製作完了"
+			@order.order_items.each do |order_item|
+				if order_item.production_status == "製作完了"
+					i = i + 1
+				end
+			end
+		# order_itemと"製作完了"の数が一緒になれば、order_statusが"発送準備中"になる
+		if i == @order.order_items.length
+		  @order.update(order_status: "発送準備中")
 		end
 	end
 	redirect_to admin_order_path(@order)
