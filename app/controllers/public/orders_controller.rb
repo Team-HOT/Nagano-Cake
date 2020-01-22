@@ -1,5 +1,10 @@
 class Public::OrdersController < ApplicationController
     def new
+        @cart_item = current_end_user.cart_items
+        if @cart_item.blank?
+            flash[:notice] = "カートが空です"
+            redirect_to public_product_categories_path
+        end
         @order = Order.new
         @delivery = current_end_user.deliveries
         @e = current_end_user
@@ -13,10 +18,8 @@ class Public::OrdersController < ApplicationController
             e = d.delivery_name1
             @a << [b + c + e]
         end
-
-# p @a
-
 end
+
 def show
     @order = Order.find(params[:id])
     @orders = @order.order_items
@@ -25,7 +28,6 @@ end
 
 def detail
     @order_item = OrderItem.find(params[:id])
-
 
 end
 
@@ -51,15 +53,19 @@ def confirm
         @order_delivery = params[:order][:Delivery_address]
 
     elsif params[:Delivery_info] == "3"
-        @dp = params[:order][:Delivery_post]
-        @da = params[:order][:Delivery_address]
-        @dn = params[:order][:delivery_name]
+        @dp = params[:Delivery_post]
+        @da = params[:Delivery_address]
+        @dn = params[:delivery_name]
 
         @order_delivery = @dp.to_s + @da + @dn
 
-
-
-
+        @t.delivery_post = @dp
+        @t.delivery_address = @da
+        @t.delivery_name1 = @dn
+        @t.end_user_id = current_end_user.id
+    #orderテーブルにはend_user_idのカラムがあるのでそれにcurrent_end_user.idを入れてあげる
+        @t.save!
+    elsif render :new
 
     end
     @cart_items = current_end_user.cart_items
@@ -68,8 +74,8 @@ def confirm
     @order = Order.new(order_params)
     @order_item = OrderItem.new
 
-
 end
+
 def create
     @order = Order.new(order_params)
     @order.end_user_id = current_end_user.id
@@ -97,6 +103,7 @@ end
 def edit
     @order = Order.find(params[:id])
 end
+
 def index
     @end_user = current_end_user
     @orders = Order.all
