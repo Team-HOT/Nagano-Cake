@@ -3,9 +3,8 @@
 
 <div class= "box1">
 <div class= "row">
-<div class=b>
-登録情報編集
-</div>
+
+<h1>登録情報編集</h1>
 
 <%= link_to "退会する", public_end_user_withdraw_path(current_end_user.id) %>
 
@@ -51,7 +50,7 @@
 			<td><%= f.text_field :email %></td>
 		</tr>
 	</table>
-	<%= f.submit '編集内容を保存する',class: "col-xs-3 btn btn-success btn-lg" %>
+	<%= f.submit '編集内容を保存する' %>
 
 
 	<% end %>
@@ -67,12 +66,4 @@
 		margin-top:100px;
 		font-size: 4rem;
 	}
-	.b {
-		font-size: 4rem;
-		background-color: #e91e6321;
-		text-align: center;
-        border-radius: 20px; 
-        margin-right: 900px;
-        margin-left: 0px;
-    }
 </style>

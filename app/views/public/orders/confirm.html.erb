@@ -1,13 +1,10 @@
-<%= render 'public/homes/header' %>
+
 <div class= "box1">
 <div class= "row">
-<div class=b>
-注文確認情報
-</div>
+<h1>注文確認情報</h1>
 <%= form_for(@order_item, url: public_orders_path) do |f| %>
-<% @total = 0 %>
 
-<table class="table">
+<table>
 <thead>
 	<tr>
 		<th>商品名</th>
@@ -17,13 +14,17 @@
 	</tr>
 </thead>
 <tbody>
+		<% @total = 0 %>
+		<% tax = 1.1 %>
 		<% current_end_user.cart_items.each do |item| %>
 		<tr>
 			<td><%= item.product.name %></td>
-			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
+				<% @product_price = item.product.price * tax %>
+			<td><%= converting_to_jpy(@product_price.floor) %>円</td>
 			<td><%= item.quentity %>個</td>
-			<td><%= converting_to_jpy(item.product.price * item.quentity) %>円</td>
-			<% @subtotal = item.product.price * item.quentity %>
+				<% @syoukei = @product_price * item.quentity %>
+			<td><%= converting_to_jpy(@syoukei.floor) %>円</td>
+			<% @subtotal = item.product.price * item.quentity * tax %>
 			<% @total += @subtotal %>
 		</tr>
 		<tr>
@@ -35,26 +36,25 @@
 			<td><%= converting_to_jpy(@total.floor) %>円</td>
 
 			<th>請求金額</th>
-			<td><%= converting_to_jpy(@total += @postage.floor) %>円</td>
+			<% @total += @postage %>
+			<td><%= converting_to_jpy(@total.floor) %>円</td>
 		</tr>
 </tbody>
 </table>
 <% end %>
 
 <%= form_for(@order, url: public_orders_path) do |a| %>
-<div>
-支払い方法
-</div>
+<h3>支払い方法</h3>
 <%= @payment %>
 <%= a.hidden_field :payment %>
-<div>
-お届け先
-</div>
+
+<h3>お届け先</h3>
 <%= @order_delivery %>
 <%= a.hidden_field :Delivery_address, :value => @order_delivery %>
 <% @postage %>
 <%= a.hidden_field :postage, :value => "800" %>
-<%= a.submit "注文を確定する", class: "col-xs-3 btn btn-success btn-lg" %>
+<%= a.hidden_field :order_status, :value => "入金待ち" %>
+<%= a.submit "注文を確定する" %>
 <% end %>
 </div>
 </div>
@@ -67,13 +67,6 @@
 		margin-top:100px;
 		font-size: 4rem;
 	}
-	.b {
-		font-size: 4rem;
-		background-color: #e91e6321;
-		text-align: center;
-        border-radius: 20px; 
-        margin-right: 400px;
-    }
 </style>
 
 

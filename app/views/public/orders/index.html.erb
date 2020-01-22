@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= render 'public/homes/header' %>
 
 <div class= "box1">
@@ -6,6 +7,11 @@
 注文履歴一覧
  </div>
 <table class="table">
+=======
+
+<h1>注文履歴一覧</h1>
+<table>
+>>>>>>> master
 	<thead>
 		<tr>
 			<th>注文日</th>
@@ -17,50 +23,26 @@
 		</tr>
 	</thead>
 	<tbody>
+		<% tax = 1.1 %>
 	<% current_end_user.orders.each do |o| %>
 		<% @a = 0 %>
 		<tr>
-			<td><%= o.created_at %></td>
+			<td><%= o.created_at.strftime("%Y-%m-%d%H:%M") %></td>
 			<td>〒<%= o.Delivery_address %></td>
 			<td>
 				<% o.order_items.each do |it| %>
 					<p><%= it.order_item_name %></p>
-					<% @subtotal = it.order_item_price * it.quantity %>
+					<% @subtotal = it.order_item_price * it.quantity * tax %>
 					<% @a += @subtotal %>
 				<% end %>
 			</td>
 			<td><%= converting_to_jpy(@a.floor) %>円</td>
+			<td><%= o.order_status %>
 			<td><%= link_to "表示する", public_end_user_order_path(end_user_id: current_end_user.id, id: o.id) %>
 		</tr>
 	<% end %>
 	</tbody>
 </table>
- </div>
-   </div>
-
-
-<style>
-	.box1 {
-		display: flex;
-		justify-content: center;
-		margin-top:200px;
-		font-size: 2.8rem;
-	}
-
-
-
-    .b {
-    	font-size: 4rem;
-    	margin: 10px;
-		background-color: #e91e6321;
-		text-align: center;
-        border-radius: 20px; 
-        margin-right: 500px;
-        margin-left: 500px;
-    }
-
-
-</style>
 
 
 
