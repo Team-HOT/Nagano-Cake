@@ -6,17 +6,19 @@
 </div>
 
 <%= form_for(@delivery, url: public_deliveries_path(current_end_user.id)) do |f| %>
-<table>
+<table class= "table">
 	<tr>
-		<th><%= f.label :郵便番号 %></th>
+		<th>&#12306;  <%= f.label :郵便番号 %></th>
 			<td><%= f.text_field :delivery_post %></td>
 	</tr>
 	<tr>
-		<th><%= f.label :住所 %></th>
+		         <th><%= f.label :住所 %></th>
 			<td><%= f.text_field :delivery_address %></td>
 	</tr>
+
 	<tr>
 		<th><%= f.label :宛名 %></th>
+
 			<td><%= f.text_field :delivery_name1 %></td>
 	</tr>
 </table>
@@ -26,15 +28,26 @@
 </div>
 <% end %>
 
-<table>
+<table class="table-bordered">
 
 <tr>
+	<th>郵便番号</th>
+	<th>住所</th>
+	<th>名前</th>
+	<th></th>
+	<th></th>
+	
 </tr>
 <tr>
 	<% @deliveries.each do |d| %>
-	<td><%= d.delivery_post %></td>
+	<td>&#12306;<%= d.delivery_post %></td>
+
 	<td><%= d.delivery_address %></td>
+</div>
+
 	<td><%= d.delivery_name1 %></td>
+</div>
+    
 	<td><%= link_to "編集する", edit_public_delivery_path(d.id) %></td>
 	<td><%= link_to "削除する", public_end_user_path(d.id), method: :delete %></td>
 </tr>
@@ -71,6 +84,9 @@
     }
     .col-xs-3 {
     	margin-right: -30px;
+    }
+    .table-bordered {
+    	padding: 20px;
     }
 
 

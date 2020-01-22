@@ -1,12 +1,31 @@
 <%= render 'public/homes/header' %>
+<div class ="row3">
+	<div class="col-xs-5">
+<%= image_tag'arigatou.jpg', size:'500x500'%>
+</div>
+<div class ="row4">
+	<div class="col-xs-5">
+<h1>ご購入ありがとうございました!</h1>
+<h1>またのご利用をお待ちしております。</h1>
+<%= link_to "マイページへ戻る", public_end_user_path(current_end_user),class: "col-xs-5 btn btn-success btn-lg" %>
+</div>
 
 
 
 
 
+<style>
+	.row3 {
+		margin-left: 400px;
+	}
 
-<h1>ありがとうございました</h1>
-
-<%= link_to "マイページへ戻る", public_end_user_path(current_end_user) %>
+    .row4
+    {
+    	padding-top: 100px;
+    }
+    .col-xs-5 {
+    	padding-right: -10px;
+    }
+</style>
 
 
