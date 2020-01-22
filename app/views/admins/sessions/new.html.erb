@@ -20,16 +20,14 @@
 <% end %>
 
 <div class="actions">
-   <%= f.submit "Log in",class: "col-xs-5 btn btn-success btn-lg" %>
+   <%= f.submit "Log in",class: "col-xs-5 btn btn-danger btn-sm" %>
 </div>
 <% end %>
+<br>
+<br>
   <%= render "admins/shared/links" %>
 </div>
 </div>
-
-
-
-
 
 
 <style>
@@ -37,8 +35,13 @@
     display: flex;
     justify-content: center;
     margin-top:80px;
-    font-size: 3rem;
+    font-size: 2rem;
   }
+    .btn-danger {
+    background-color: #CD5C5C;
+    border-color: #CD5C5C;
+    color: #FFF;
+    font-size: 14px;
 </style>
 
 
