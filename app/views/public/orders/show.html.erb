@@ -1,12 +1,15 @@
-
+<%= render 'public/homes/header' %>
+<div class= "box1">
+<div class= "row">
+<div class=b>
 <h1>注文履歴詳細</h1>
+</div>
 
-
-<h3>注文情報</h3>
+<h1>注文情報</h1>
 <table>
 	<tr>
 		<th>注文日</th>
-			<td><%= @order.created_at.strftime("%Y-%m-%d%H:%M") %></td>
+			<td><%= @order.created_at %></td>
 	</tr>
 	<tr>
 		<th>配送先</th>
@@ -18,7 +21,7 @@
 	</tr>
 	<tr>
 		<th>ステータス</th>
-		<td><%= @order.order_status %></td>
+		<td></td>
 	</tr>
 </table>
 
@@ -35,7 +38,7 @@
 	<% @subtotal = o.order_item_price * o.quantity * tax %>
 	<% @a += @subtotal %>
 	<% end %>
-			<td><%= converting_to_jpy(@a.floor) %>円</td>
+			<td><%= @a %></td>
 
 
 	</tr>
@@ -65,16 +68,44 @@
 	<% @order.order_items.each do |o| %>
 	<tr>
 		<td><%= o.order_item_name %></td>
-			<% @order_price = o.order_item_price * tax %>
-		<td><%= converting_to_jpy(@order_price.floor) %>円</td>
-		
+		<td><%= o.order_item_price %></td>
 		<td><%= o.quantity %>個</td>
-		<% @syoukei = @order_price * o.quantity %>
+		<% @syoukei = o.order_item_price * o.quantity * tax %>
 		<td><%= converting_to_jpy(@syoukei.floor) %>円</td>
 	</tr>
+
 	<% end %>
 </tbody>
 </table>
+<div class= "box2">
+	<%= link_to "マイページへ戻る",public_end_user_path(current_end_user.id) %>
+</div>
+</div>
+ </div>
+
+
+ <style>
+	.box1 {
+		display: flex;
+		justify-content: center;
+		margin-top:70px;
+		margin-bottom: 70px;
+		font-size: 3rem;
+
+	}
+
+
+	.box2 {
+	}
+
+
+	.b {
+		font-size: 5rem;
+		background-color: #e91e6321;
+        text-align: center;
+        border-radius: 20px; 
+
+</style>
 
 
 
