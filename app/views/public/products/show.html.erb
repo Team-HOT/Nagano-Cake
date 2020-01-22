@@ -1,11 +1,13 @@
 
+<div class= "box2 ">
 <%= render 'public/homes/header' %>
 <%= render 'public/products/sidemenu' %>
 <div class="col-xs-5">
 <%= attachment_image_tag @product, :product_image, :fill, 500, 500, fallback: "no_image.jpg",size:'500x500',format: 'no_image.jpg' %>
 </div>
 <div class="col-xs-4">
-	<h2><%= @product.name %></h2>
+	<div class= "box1">
+	<h2><strong><%= @product.name %></strong></h2>
 	<%= form_for(@cart_item, url: public_cart_items_path ) do |f| %>
 		<% tax = 1.1 %>
 		<%= @product.product_body %>
@@ -16,6 +18,8 @@
 		<%= f.select :quentity, [["1",1],["2",2],["3",3],["4",4],["5",5],["6",6],["7",7],["8",8],["9",9],["10",10]] %>
 		<%= f.submit "カートに入れる" %>
 	<% end %>
+ </div>
+</div>
 </div>
 
 
@@ -29,27 +33,51 @@
 .col-xs-4{
 	font-size: 2rem;
 	padding-left:  0px;
-	
 	float:right;
 }
+.col-xs-5 {
+	padding-left:80px;
+}
+
 .item{
 
 	margin-bottom: 200px;
 	margin-right: 0px;
 	padding: 0px;
-
 }
 .box1{
-	margin-right: 180px;
-	margin-left: -40px;
+	margin-right: 200px;
+	margin-left: -100px;
 	font-size:3rem;
 }
 
 .box2 {
     margin: 80px;
     margin-left: 70px;
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
 

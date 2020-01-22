@@ -1,12 +1,20 @@
 <%= render 'public/homes/header' %>
+
+			<% if flash[:notice] %>
+			<div class = "box3">
+		<div class="flash">
+			<%= flash[:notice] %>
+			<% end %>
+		</div>
+		</div>
+
 <div class="container">
 	<div class="row">
 		<%= render 'public/products/sidemenu' %>
-		<% if flash[:notice] %>
-		<div class="flash">
-			<%= flash[:notice] %>
-		</div>
-		<% end %>
+		
+
+   
+
 
 		<div class= col-xs-9>
 			<div class="">
@@ -14,31 +22,34 @@
 			</div>
 
 			<div class="products">
-				<% tax = 1.1 %>
 				<% @product.each do |products| %>
-				<%= link_to public_product_path(products.id) do  %>
-				<div class="item">
-					<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
+					<%= link_to public_product_path(products.id) do  %>
+						<div class="item">
+							<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
 
-					<p class="font1">
-						<%= products.name %><br>
-						<% @total = products.price * tax %>
-						¥<%= converting_to_jpy(@total.floor) %>(税込)
-					</p>
-				</div>
-				<% end %>
+							<p class="font1">
+								<%= products.name %><br>
+								¥<%= products.price %>(税込)
+							</p>
+						</div>
+					<% end %>
 				<% end %>
 			</div>
-			<nav>
-				<div><%= paginate  @product %></div>
-			</nav>
-		</div>
+		<nav>
+			<div><%= paginate  @product %></div>
+		</nav>
 	</div>
+</div>
 
 
-	<style>
+<style>
+
 	.font1 {
-		color: #6e5064;
-		font-size:2rem ; 
+	color: #6e5064;
+	font-size:2rem ; 
 	}
+    .box3  {
+    	margin-top:200px;
+    }
+
 </style>
