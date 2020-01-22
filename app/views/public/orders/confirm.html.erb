@@ -3,7 +3,6 @@
 <div class= "row">
 <h1>注文確認情報</h1>
 <%= form_for(@order_item, url: public_orders_path) do |f| %>
-<% @total = 0 %>
 
 <table>
 <thead>
@@ -15,13 +14,17 @@
 	</tr>
 </thead>
 <tbody>
+		<% @total = 0 %>
+		<% tax = 1.1 %>
 		<% current_end_user.cart_items.each do |item| %>
 		<tr>
 			<td><%= item.product.name %></td>
-			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
+				<% @product_price = item.product.price * tax %>
+			<td><%= converting_to_jpy(@product_price.floor) %>円</td>
 			<td><%= item.quentity %>個</td>
-			<td><%= converting_to_jpy(item.product.price * item.quentity) %>円</td>
-			<% @subtotal = item.product.price * item.quentity %>
+				<% @syoukei = @product_price * item.quentity %>
+			<td><%= converting_to_jpy(@syoukei.floor) %>円</td>
+			<% @subtotal = item.product.price * item.quentity * tax %>
 			<% @total += @subtotal %>
 		</tr>
 		<tr>
@@ -33,7 +36,8 @@
 			<td><%= converting_to_jpy(@total.floor) %>円</td>
 
 			<th>請求金額</th>
-			<td><%= converting_to_jpy(@total += @postage.floor) %>円</td>
+			<% @total += @postage %>
+			<td><%= converting_to_jpy(@total.floor) %>円</td>
 		</tr>
 </tbody>
 </table>

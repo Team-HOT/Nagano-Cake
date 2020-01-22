@@ -2,6 +2,12 @@
 <div class= "box1">
 <div class= "row">
 
+	<% if flash[:notice] %>
+<div class="flash">
+	<%= flash[:notice] %>
+</div>
+<% end %>
+
 <p>ショッピングカート</p>
 <%= link_to "カートを空にする", destroy_all_public_cart_item_path(current_end_user.cart_items), method: :delete %>
 <% @total = 0 %>
@@ -22,13 +28,14 @@
 		<tr>
 
 			<td><%= item.product.name %></td>
-			<td><%= converting_to_jpy(item.product.price.floor) %>円</td>
+				<% @product_price = item.product.price * tax %>
+			<td><%= converting_to_jpy(@product_price.floor) %>円</td>
 			<%= form_for(item, url: public_cart_item_path(item)) do |f| %>
 			<td><%= f.number_field :quentity,class: "col-xs-7 btn btn-default btn-lg" %></td>
 			<td><%= f.submit "変更" %></td>
 			<% end %>
-
-			<td><%= converting_to_jpy(item.product.price * item.quentity.floor) %>円</td>
+				<% @syoukei = @product_price * item.quentity %>
+			<td><%= converting_to_jpy(@syoukei.floor) %>円</td>
 
 			<% @subtotal = item.product.price * item.quentity * tax %>
 			<% @total += @subtotal %>
@@ -38,7 +45,7 @@
 	</tbody>
 	<% end %>
 </table>
-<p>買い物を続ける</p>
+<%= link_to "買い物を続ける", public_product_categories_path %>
 <table>
 	<tr><p>合計金額</p></tr>
     <td><%= converting_to_jpy(@total.floor) %>円</td>
