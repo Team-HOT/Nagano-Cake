@@ -13,7 +13,7 @@
 				<%= f.label(:product_category_status, "有効", value: "有効") %>
 				<%= f.radio_button(:product_category_status, "無効") %>
 				<%= f.label(:product_category_status, "無効", value: "無効") %>
-				<%= f.submit '追加', class:"btn btn-danger btn-sm" %>
+				<%= f.submit '追加', method: :post, class:"btn btn-danger btn-sm" %>
 				</div>
 			<% end %>
 			<br>
@@ -33,7 +33,7 @@
 						<td><%= p.product_category_status %></td>
 						<td><%= link_to "編集する", edit_admin_product_category_path(p) %>
 						</td>
-						<td><%= link_to "削除", admin_product_category_path(p.id), method: :delete%>
+						<td><%= link_to "削除", admin_product_category_path(p), method: :delete%>
 						</td>
 					</tr>
 				</tbody>
