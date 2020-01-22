@@ -26,14 +26,14 @@
 						<% full_name = name1 + name2 %>
 						<tr>
 							<td><%= order.created_at.strftime("%Y-%m-%d%H:%M")%></td>
-							<td><%= link_to full_name, admin_end_user_path(order.end_user.id) %>
+							<td><%= link_to full_name, admin_end_user_path(order.end_user.id), class: "full_name" %>
 							</td>
 							<% order.order_items.each do |i| %>
 							<% @a += i.quantity %>
 							<% end %>
 							<td><%= @a %></td>
 							<td><%= order.order_status %></td>
-							<td><%= link_to "注文詳細", admin_order_path(order.id) %></td>
+							<td><%= link_to "注文詳細", admin_order_path(order.id), class: "order-show" %></td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -41,3 +41,16 @@
 		</div>
 	</div>
 </div>
+
+<style>
+.table {
+	font-size: 18px;
+}
+.order-show {
+	color: #CD5C5C;
+	font-weight: bold;
+}
+.full_name {
+	color: #6E5064;
+}
+</style>

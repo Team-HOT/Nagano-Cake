@@ -7,7 +7,7 @@
 			<h3>ジャンル追加・一覧画面</h3>
 			<br><br>
 			<%= form_for(@product_category, url: admin_product_categories_path) do |f| %>
-				<div>ジャンル
+				<div class="category_name">ジャンル
 				<%= f.text_field :product_category_name %>
 				<%= f.radio_button(:product_category_status, "有効") %>
 				<%= f.label(:product_category_status, "有効", value: "有効") %>
@@ -50,4 +50,10 @@
 		color: #FFF;
 		font-size: 14px;
 	}
+	.table {
+	font-size: 18px;
+}
+.category_name {
+	font-size: 18px;
+}
 </style>
