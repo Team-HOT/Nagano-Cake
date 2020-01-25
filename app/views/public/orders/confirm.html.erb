@@ -50,10 +50,12 @@
 <div>
 お届け先
 </div>
+
 <%= @order_delivery %>
 <%= a.hidden_field :Delivery_address, :value => @order_delivery %>
 <% @postage %>
 <%= a.hidden_field :postage, :value => "800" %>
+
 <%= a.submit "注文を確定する", class: "col-xs-3 btn btn-success btn-lg" %>
 <% end %>
 </div>

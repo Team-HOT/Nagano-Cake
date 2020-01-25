@@ -1,53 +1,73 @@
 <%= render 'public/homes/header' %>
-
-			<% if flash[:notice] %>
-			<div class = "box3,product-categories">
-		<div class="flash">
-			<%= flash[:notice] %>
+       <strong><% if flash[:notice] %></strong>
+	<div class="flash">
+	<strong><%= flash[:notice] %></strong>
 			<% end %>
-		</div>
-		</div>
+<%= render 'public/products/sidemenu' %>
+  <div class="row1 ">
+  <div class= col-xs-3></div>
 
-<div class="container,product-categories">
-	<div class="row">
-		<%= render 'public/products/sidemenu' %>
+  <div class="row2 ">
+  <div class= col-xs-9>
+  <div class="">
+<%= image_tag'スイーツ.jpg', size:'900x500'%>
+  </div>
+
+<div class="box20">
+  <% @product.each do |products| %>
+  <%= link_to public_product_path(products.id) do  %>
 
 
+<% if products.sale_status == "販売中" %>
+<div class="item">
+<div><%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %></div>
+</div>
+<p class="font1">
+  <%= products.name %><br>
+  ¥<%= products.price %>(税込)
+</p>
+<% end %>
 
-		<div class= col-xs-9>
-			<div class="">
-				<%= image_tag'スイーツ.jpg', size:'900x500'%>
-			</div>
-                <div class="products">
-				<% @product.each do |products| %>
-					<%= link_to public_product_path(products.id) do  %>
-						<div class="item">
-							<% if products.sale_status == "販売中" %>
-							<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
-						</div>
-							<p class="font1">
-								<%= products.name %><br>
-								¥<%= products.price %>(税込)
-							</p>
-							<% end %>
-						</div>
 
-					<% end %>
-				<% end %>
-			
-		<nav>
-			<div><%= paginate  @product %></div>
-		</nav>
-	</div>
+<% end %>
+<% end %>
+</div>
+<nav>
+<div><%= paginate  @product %></div>
+</nav>
+</div>
+</div>
 </div>
 
 
+
+
+
+
+
+
+
+
+
+
+
 <style>
+.row1{
+  margin:40px;
+  margin-left:40px;
+  padding:0px;
 
-	.font1 {
-	color: #6e5064;
-	font-size:2rem ; 
-	}
-    
+}
 
+.box20 {
+  display :flex;
+
+  flex-wrap:wrap;
+  width: 1100px;
+}
+
+
+.font1 {
+  color: #6e5064;
+  font-size:2rem ; 
 </style>

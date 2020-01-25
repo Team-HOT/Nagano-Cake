@@ -1,6 +1,5 @@
-<div class="row1">
+<div class="row1 ">
 <%= render 'public/homes/header' %>
-<div class="container2, product_categories">
 
 <%= render 'public/products/sidemenu' %>
 
@@ -10,7 +9,7 @@
 	<%= link_to public_product_path(products.id) do  %>
 	<div class="item">
 	<%= attachment_image_tag products, :product_image, :fill, 200, 200, fallback: "no_image.jpg",size:'200x200',format: 'no_image.jpg' %>
-   
+
 </div>
 
 	<div class= "font1"><%= products.name %><br></div>
@@ -30,8 +29,8 @@
 
 
 
-<style>
-  
+
+ 
 <style>
    .row1{
    	margin:40px;
@@ -41,18 +40,30 @@
    }
 
    
+ .products {
+ display :flex;
+ 
+ flex-wrap:wrap;
+ width: 1100px;
+}
+
 
 	.font1 {
 	color: #6e5064;
 	font-size:2rem ;
 	}
+
+	.item {
+	margin: 5px;
+	padding: 10px;
+}
 </style>
 
 
 
 
 
-</style>
+
 
 
 
