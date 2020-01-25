@@ -2,7 +2,7 @@
 
 <div class= "row"></div>
 <div class= "col-xs-3">
-	<div class="j">
+	<div class="font4">
 <h2>ジャンル検索</h2>
 </div>
 <table class="table">
@@ -13,6 +13,7 @@
 
 <% if category.product_category_status == "有効" %>
 <%= link_to public_product_category_path(category.id) do %>
+
 <h3><font color="#871900"><%= category.product_category_name %><h3>
 </tr>
 </p>
@@ -27,8 +28,12 @@
 
 
 <style>
-.j {
+.alert {
 	text-align: center;
+}
+.font4 {
+	text-align: center;
+}
 }
 </style>
 

@@ -29,6 +29,7 @@
 					<% @a += @subtotal %>
 				<% end %>
 			</td>
+			<td><%= o.order_status %></td>
 			<td><%= converting_to_jpy(@a.floor) %>円</td>
 			<td><%= link_to "表示する", public_end_user_order_path(end_user_id: current_end_user.id, id: o.id) %>
 		</tr>
@@ -41,10 +42,12 @@
 
 <style>
 	.box1 {
+		margin:50px;
 		display: flex;
 		justify-content: center;
-		margin-top:200px;
+		margin-top:20px;
 		font-size: 2.8rem;
+		padding:50px;
 	}
 
 
