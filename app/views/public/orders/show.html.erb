@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<th>ステータス</th>
-		<td></td>
+		<td><%= @order.order_status %></td>
 	</tr>
 </table>
 
@@ -38,7 +38,7 @@
 	<% @subtotal = o.order_item_price * o.quantity * tax %>
 	<% @a += @subtotal %>
 	<% end %>
-			<td><%= @a %></td>
+			<td><%= converting_to_jpy(@a.floor) %>円</td>
 
 
 	</tr>
