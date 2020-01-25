@@ -4,37 +4,7 @@
 
 // hederのcss//
 
-.main-nav {
-	display: flex;
-	font-size: 3rem;
-	text-transform: uppercase;
-	margin-top: 34px;
-	list-style: none;
-}
 
-.main-nav li {
-	margin-left: 36px;
-}
-
-.page-header {
-	display: flex;
-	justify-content: space-between;
-}
-
-.wrapper {
-	max-width: 1100px;
-	margin: 0 auto;
-	padding: 0 4%;
-}
-
-
-strong {
-	font-size: 5rem;
-	color: #6e5064;
-	margin-top: 20px;
-	margin-bottom: 0px;
-	padding: 10px;
-}
 //ここまで//
 
 //商品画像の余白//
@@ -47,14 +17,6 @@ strong {
 
 //商品画像の横並び//
 
-.container2 {
-}
- .products {
- display :flex;
- 
- flex-wrap:wrap;
- width: 1100px;
-}
 
 
 
@@ -62,11 +24,7 @@ strong {
 //ここまで//
 
 
-//商品画像を右側にする//
-.main {
-	float: right;
-}
-//ここまで//
+
 
 
 //hederのフォントカラー指定//
